@@ -5,7 +5,7 @@ import {AllUsersContext} from "../context/AllUsersContext.js";
 import { useContext } from "react";
 
 function Signup() {
-  const [allUsers,setAllUsers]=useContext(AllUsersContext);
+  const [,setAllUsers]=useContext(AllUsersContext);
   const [message, setMessage] = useState("");
   const [values, setValues] = useState({
     username: "",
