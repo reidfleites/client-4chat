@@ -9,7 +9,7 @@ import hideImg from "../../images/close-eye.png";
 function Login() {
   const [username,setUsername] = useState("");
   //const [currentUser, setCurrentUser] = useContext(AppContext);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
  //show and hide Password
   const [pwd, setPwd] = useState("");
   const [isRevealPwd, setIsRevealPwd] = useState(false);
