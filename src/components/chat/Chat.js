@@ -8,6 +8,7 @@ import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
+//coment für deploy
 import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
