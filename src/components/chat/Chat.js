@@ -49,6 +49,7 @@ function Chat() {
   //Random Avatar
   //const [seed, setSeed] = useState("");
   //get current User
+  /*
   const getCurrentUser = async () => {
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/currentUser`, {
       method: "GET",
@@ -58,6 +59,7 @@ function Chat() {
     console.log(user);
     setCurrentUser({ ...user });
   };
+  */
   //set allUser array
   const getAllUsers = async () => {
     const response = await fetch(
