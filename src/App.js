@@ -6,20 +6,23 @@ import Signup from "./components/signup/Signup";
 import Chat from "./components/chat/Chat";
 import Verified from "./components/verified/Verified";
 import MyProvider from "./components/context/AppContext";
+import AllUsersProvider from "./components/context/AllUsersContext";
 
 function App() {
   return (
     <div className="app">
       <MyProvider>
-        <div>
-          <Navbar />
-        </div>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/verify" element={<Verified/>}/>
-        </Routes>
+        <AllUsersProvider>
+          <div>
+            <Navbar />
+          </div>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="/verify" element={<Verified />} />
+          </Routes>
+        </AllUsersProvider>
       </MyProvider>
     </div>
   );

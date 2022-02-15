@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
+import { AllUsersContext } from "../context/AllUsersContext.js";
+
 //import { BiMessageRounded } from "react-icons/bi";
 //coment für deploy
 //2 comment
@@ -32,6 +34,7 @@ function Chat() {
   const [receiver, setReceiverId] = useState("");
   const [newMessage, setNewMessage] = useState("");
   const [room, setRoom] = useState("");
+  const [allUsers, setAllUsers] = useContext(AllUsersContext);
   const navigate = useNavigate();
   const [showPicker, setShowPicker] = useState(false);
   const [notification, setNotification] = useState(false);
@@ -156,8 +159,9 @@ function Chat() {
   }, [socket, currentUser]);
 
   useEffect(() => {
-    /*
+    
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+    /*
     if (currentChat.length > 0) {
       localStorage.setItem("currentChat", JSON.stringify(currentChat));
     }
