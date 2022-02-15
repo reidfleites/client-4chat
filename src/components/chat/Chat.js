@@ -161,7 +161,7 @@ function Chat() {
   }, [currentChat]);
 
   useEffect(() => {
-    getCurrentUser();
+   // getCurrentUser();
     getAllUsers();
     /*
     const chat = JSON.parse(localStorage.getItem("currentChat"));
