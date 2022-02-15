@@ -328,6 +328,7 @@ function Chat() {
           <section>
             <h3>
               {currentUser.username}
+              {allUsers.legend}
               
             </h3>
             <button onClick={logout}>logout</button>
