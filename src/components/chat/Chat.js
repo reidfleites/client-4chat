@@ -151,19 +151,23 @@ function Chat() {
   }, [socket, currentUser]);
 
   useEffect(() => {
+    /*
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
     if (currentChat.length > 0) {
       localStorage.setItem("currentChat", JSON.stringify(currentChat));
     }
+    */
   }, [currentChat]);
 
   useEffect(() => {
     getCurrentUser();
     getAllUsers();
+    /*
     const chat = JSON.parse(localStorage.getItem("currentChat"));
     if (chat) {
       setCurrentChat([...chat]);
     }
+    */
   }, []);
 
   useEffect(() => {
