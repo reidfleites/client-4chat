@@ -1,0 +1,17 @@
+.verified {
+  padding-top: 50px;
+  width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  color: #555;
+}
+h3 {
+  color: #555;
+}
+h2 {
+  color: #b91646;
+}

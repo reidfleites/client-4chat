@@ -1,0 +1,40 @@
+.signup {
+  padding-top: 50px;
+  width: 300px;
+  margin: auto;
+  color: #b91646;
+}
+.signup form input {
+  background-color: #dfd8ca;
+  width: 100%;
+  border: none;
+  margin: 5px 0;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 15px;
+}
+.signup form input:hover {
+  background-color: #fbf3e4;
+}
+.signup form input:focus {
+  background-color: #fbf3e4;
+  outline: none;
+}
+.signup form button {
+  background: #b91646;
+  width: 100%;
+  border: none;
+  margin: 5px 0;
+  padding: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 15px;
+  color: #fbf3e4;
+}
+.signup form button:hover {
+  font-weight: bold;
+}
+.signup h3 {
+  padding-left: 5px;
+}/*# sourceMappingURL=signup.css.map */

@@ -1,0 +1,9 @@
+*{
+  font-family: monospace;
+}
+.app {
+  margin: 0;
+  padding: 10px;
+  color: rgb(14, 14, 14);
+  background-color: white;
+}

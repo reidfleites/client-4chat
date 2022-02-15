@@ -1,0 +1,74 @@
+$a: #b91646;
+$b: #dfd8ca;
+$c: #fbf3e4;
+$d: #105652;
+
+.login {
+  padding-top: 50px;
+  width: 300px;
+  margin: auto;
+  color: $a;
+
+  form {
+    input {
+      background-color: $b;
+      width: 100%;
+      border: none;
+      margin: 5px 0;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+      border-radius: 15px;
+    }
+
+    input:hover {
+      background-color: $c;
+    }
+
+    input:focus {
+      background-color: $c;
+      outline: none;
+    }
+    div {
+      position: relative;
+      img {
+        cursor: pointer;
+        position: absolute;
+        width: 20px;
+        right: 15px;
+        top: 15px;
+        opacity: 0.7;
+      }
+    }
+    p {
+      padding: 5px;
+      font-size: 12px;
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      a:hover {
+        text-decoration: none;
+        color: #726761;
+      }
+    }
+
+    button {
+      background: $a;
+      width: 100%;
+      border: none;
+      padding: 15px;
+      margin: 5px 0;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 15px;
+      color: $c;
+    }
+    button:hover {
+      font-weight: bold;
+    }
+  }
+
+  //show and hide Password
+}

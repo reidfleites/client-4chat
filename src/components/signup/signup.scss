@@ -1,0 +1,50 @@
+$a: #b91646;
+$b: #dfd8ca;
+$c: #fbf3e4;
+$d: #105652;
+
+.signup {
+  padding-top: 50px;
+  width: 300px;
+  margin: auto;
+  color: $a;
+  
+  form {
+    input {
+      background-color: $b;
+      width: 100%;
+      border: none;
+      margin: 5px 0;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+      border-radius: 15px;
+    }
+    input:hover {
+      background-color: $c;
+    }
+
+    input:focus {
+      background-color: $c;
+      outline: none;
+    }
+
+    button {
+      background: $a;
+      width: 100%;
+      border: none;
+      margin: 5px 0;
+      padding: 15px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 15px;
+      color: $c;
+    }
+    button:hover {
+      font-weight: bold;
+    }
+  }
+  h3{
+    padding-left: 5px;
+  }
+}

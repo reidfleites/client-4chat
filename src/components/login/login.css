@@ -1,0 +1,60 @@
+.login {
+  padding-top: 50px;
+  width: 300px;
+  margin: auto;
+  color: #b91646;
+}
+.login form input {
+  background-color: #dfd8ca;
+  width: 100%;
+  border: none;
+  margin: 5px 0;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 15px;
+}
+.login form input:hover {
+  background-color: #fbf3e4;
+}
+.login form input:focus {
+  background-color: #fbf3e4;
+  outline: none;
+}
+.login form div {
+  position: relative;
+}
+.login form div img {
+  cursor: pointer;
+  position: absolute;
+  width: 20px;
+  right: 15px;
+  top: 15px;
+  opacity: 0.7;
+}
+.login form p {
+  padding: 5px;
+  font-size: 12px;
+}
+.login form p a {
+  text-decoration: none;
+  color: inherit;
+}
+.login form p a:hover {
+  text-decoration: none;
+  color: #726761;
+}
+.login form button {
+  background: #b91646;
+  width: 100%;
+  border: none;
+  padding: 15px;
+  margin: 5px 0;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 15px;
+  color: #fbf3e4;
+}
+.login form button:hover {
+  font-weight: bold;
+}/*# sourceMappingURL=login.css.map */
