@@ -36,7 +36,7 @@ function Chat() {
   const [showPicker, setShowPicker] = useState(false);
   const [notification, setNotification] = useState(false);
   const [roomNotification, setRoomNotification] = useState(false);
-  const [allUsers, setAllUsers] = useState([]);
+  //const [allUsers, setAllUsers] = useState([]);
   const socket = useRef();
   const scrollRef = useRef();
   const [rooms, setRooms] = useState([]);
@@ -71,19 +71,22 @@ function Chat() {
     );
     if (response.ok) {
       const users = await response.json();
-      setAllUsers([...users]);
+      return users;
+     // setAllUsers([...users]);
     }
   };
   //return User from  allUser
-  const getUser = (id) => {
+  const getUser = async(id) => {
+    const allUsers = await getAllUsers();
     if (allUsers.length > 0) {
       const user = allUsers.find((user) => user._id === id);
       return user.username;
     }
   };
   //retun avatar number
-  const getAvatar = (id) => {
-    if (allUsers.length > 0) {
+  const getAvatar = async(id) => {
+    const allUsers=await getAllUsers();
+    if (allUsers > 0) {
       const user = allUsers.find((user) => user._id === id);
       return user.avatar;
     }
