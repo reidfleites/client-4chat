@@ -31,6 +31,8 @@ function Login() {
       }),
     });
     if (response.ok) {
+      const user=await response.json();
+      console.log(user)
       navigate("/chat");
     }
    
