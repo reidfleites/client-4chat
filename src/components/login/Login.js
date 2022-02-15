@@ -1,4 +1,4 @@
-//import { AppContext } from "../context/AppContext";
+import { AppContext } from "../context/AppContext";
 import { useState } from "react";
 import "./login.css";
 import { useNavigate } from 'react-router-dom';
