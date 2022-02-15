@@ -1,7 +1,7 @@
 //import { AppContext } from "../context/AppContext";
 import { useState } from "react";
 import "./login.css";
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 //import logo from "../../images/Logo.png";
 import showImg from "../../images/open-eye.png";
 import hideImg from "../../images/close-eye.png";
