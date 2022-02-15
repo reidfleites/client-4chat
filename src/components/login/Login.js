@@ -1,7 +1,7 @@
 //import { AppContext } from "../context/AppContext";
 import { useState } from "react";
 import "./login.css";
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 //import logo from "../../images/Logo.png";
 import showImg from "../../images/open-eye.png";
 import hideImg from "../../images/close-eye.png";
@@ -9,7 +9,7 @@ import hideImg from "../../images/close-eye.png";
 function Login() {
   const [username,setUsername] = useState("");
   //const [currentUser, setCurrentUser] = useContext(AppContext);
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
  //show and hide Password
   const [pwd, setPwd] = useState("");
   const [isRevealPwd, setIsRevealPwd] = useState(false);
@@ -33,17 +33,7 @@ function Login() {
     if (response.ok) {
       const user=await response.json();
       console.log(user)
-      //navigate("/chat");
-      const response2 = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/currentUser`,
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
-      const user2 = await response2.json();
-      console.log(user2);
-      
+      navigate("/chat");
     }
     
       
