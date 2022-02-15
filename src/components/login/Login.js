@@ -34,8 +34,6 @@ function Login() {
       const user=await response.json();
       console.log(user)
       navigate("/chat");
-    }
-    
       const response2 = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/currentUser`,
         {
@@ -43,8 +41,11 @@ function Login() {
           credentials: "include",
         }
       );
-      const user = await response2.json();
-      console.log(user);
+      const user2 = await response2.json();
+      console.log(user2);
+      
+    }
+    
       
     //////////make a real database connection ////////////////////////
   };
