@@ -33,7 +33,7 @@ function Login() {
     if (response.ok) {
       const user=await response.json();
       console.log(user)
-      navigate("/chat");
+      //navigate("/chat");
       const response2 = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/currentUser`,
         {
