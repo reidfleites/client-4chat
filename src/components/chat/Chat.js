@@ -76,18 +76,17 @@ function Chat() {
   };
   //return User from  allUser
   const getUser = (id) => {
-
-      let user = allUsers.find((user) => user._id === id);
+      let user = onlineUsers.find((user) => user.id === id);
       if(!user){
-        user=onlineUsers.find(user=>user.id===id)
+        user = allUsers.find((user) => user._id === id);
       }
       return user.username;
      };
   //retun avatar number
   const getAvatar = (id) => {
-      let user = allUsers.find((user) => user._id === id);
-      if(!user){
-        user = onlineUsers.find((user) => user.id === id);
+      let user = onlineUsers.find((user) => user.id === id);
+      if(user===undefined){
+       user = allUsers.find((user) => user._id === id); 
       }
       return user.avatar;
     
