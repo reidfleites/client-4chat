@@ -39,7 +39,6 @@ function Chat() {
   const [showPicker, setShowPicker] = useState(false);
   const [notification, setNotification] = useState(false);
   const [roomNotification, setRoomNotification] = useState(false);
-  const [allUsers, setAllUsers] = useState([]);
   const socket = useRef();
   const scrollRef = useRef();
   const [rooms, setRooms] = useState([]);
