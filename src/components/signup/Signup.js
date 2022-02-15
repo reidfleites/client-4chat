@@ -30,18 +30,21 @@ function Signup() {
     e.preventDefault();
     setErrors(validate(values));
     if (Object.keys(errors).length === 0) {
-      const response = await fetch("http://localhost:5000/signup", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user: {
-            name: values.username,
-            email: values.email,
-            password: values.password,
-          },
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/signup`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user: {
+              name: values.username,
+              email: values.email,
+              password: values.password,
+            },
+          }),
+        }
+      );
       if (response.ok) {
         setMessage( `Hi ${values.username}, please confirm your email`
         );
