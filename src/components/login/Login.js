@@ -35,8 +35,17 @@ function Login() {
       console.log(user)
       navigate("/chat");
     }
-   
     
+      const response2 = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/currentUser`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
+      const user = await response2.json();
+      console.log(user);
+      
     //////////make a real database connection ////////////////////////
   };
 
