@@ -75,16 +75,16 @@ function Chat() {
     }
   };
   //return User from  allUser
-  const getUser = async(id) => {
-     await getAllUsers();
+  const getUser = (id) => {
+     
     if (allUsers.length > 0) {
       const user = allUsers.find((user) => user._id === id);
       return user.username;
     }
   };
   //retun avatar number
-  const getAvatar = async(id) => {
-    await getAllUsers();
+  const getAvatar = (id) => {
+  
     if (allUsers > 0) {
       const user = allUsers.find((user) => user._id === id);
       return user.avatar;
