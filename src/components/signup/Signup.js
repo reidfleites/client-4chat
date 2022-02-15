@@ -1,11 +1,10 @@
 import "./signup.css";
 import validate from "./validation";
 import { useState } from "react";
-import {AllUsersContext} from "../context/AllUsersContext.js";
-import { useContext } from "react";
+
 
 function Signup() {
-  const [,setAllUsers]=useContext(AllUsersContext);
+  
   const [message, setMessage] = useState("");
   const [values, setValues] = useState({
     username: "",
@@ -27,20 +26,6 @@ function Signup() {
       [name]: value,
     });
   };
-
-     const getAlllUsers = async () => {
-       const response = await fetch(
-         `${process.env.REACT_APP_BACKEND_URL}/allUsers`,
-         {
-           method: "GET",
-           credentials: "include",
-         }
-       );
-       if (response.ok) {
-         const users = await response.json();
-         setAllUsers([...users]);
-       }
-     };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,7 +49,6 @@ function Signup() {
       if (response.ok) {
         setMessage( `Hi ${values.username}, please confirm your email`
         );
-        getAlllUsers();
         clearForm();
 
       }

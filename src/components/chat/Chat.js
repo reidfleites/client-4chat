@@ -7,8 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
-import { AllUsersContext } from "../context/AllUsersContext.js";
-
 //import { BiMessageRounded } from "react-icons/bi";
 //coment für deploy
 //2 comment
@@ -34,7 +32,7 @@ function Chat() {
   const [receiver, setReceiverId] = useState("");
   const [newMessage, setNewMessage] = useState("");
   const [room, setRoom] = useState("");
-  const [allUsers, setAllUsers] = useContext(AllUsersContext);
+  const [allUsers, setAllUsers] = useState([]);
   const navigate = useNavigate();
   const [showPicker, setShowPicker] = useState(false);
   const [notification, setNotification] = useState(false);
@@ -78,19 +76,21 @@ function Chat() {
   };
   //return User from  allUser
   const getUser = (id) => {
-     
-    if (allUsers.length > 0) {
-      const user = allUsers.find((user) => user._id === id);
+
+      let user = allUsers.find((user) => user._id === id);
+      if(!user){
+        user=onlineUsers.find(user=>user.id===id)
+      }
       return user.username;
-    }
-  };
+     };
   //retun avatar number
   const getAvatar = (id) => {
-  
-    if (allUsers > 0) {
-      const user = allUsers.find((user) => user._id === id);
+      let user = allUsers.find((user) => user._id === id);
+      if(!user){
+        user = onlineUsers.find((user) => user.id === id);
+      }
       return user.avatar;
-    }
+    
   };
 
   useEffect(() => {
@@ -144,7 +144,7 @@ function Chat() {
   useEffect(() => {
     //const avatar = Math.floor(Math.random() * 5000);
     //setSeed(avatar);
-    socket.current.emit("add user", currentUser._id, currentUser.username);
+    socket.current.emit("add user", currentUser._id, currentUser.username,currentUser.avatar);
     socket.current.on("onlineUsers", (onlineUsers) => {
       const myOnlineUsersList = onlineUsers.filter(
         (user) => user.id !== currentUser._id
