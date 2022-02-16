@@ -153,13 +153,15 @@ $d: #105652;
           flex-direction: row-reverse;
           .messages {
             display: flex;
+            flex-direction: row-reverse;
             align-items: center;
             .messageImg {
+           
               width: 32px;
               height: 32px;
               border-radius: 50%;
               object-fit: cover;
-              margin-right: 10px;
+              margin-left: 5px;
             }
             .msg_name {
               padding: 0;
@@ -198,7 +200,7 @@ $d: #105652;
               height: 32px;
               border-radius: 50%;
               object-fit: cover;
-              margin-right: 10px;
+              margin-right: 5px;
             }
             .msg_name {
               padding: 0;
@@ -237,7 +239,7 @@ $d: #105652;
         position: absolute;
         margin-bottom: 380px;
         .emoji-picker-react {
-          width: 550px;
+          width: 450px;
         }
       }
       .emoji {

@@ -2,7 +2,7 @@ import { AppContext } from "../context/AppContext";
 import { useState,useContext} from "react";
 import "./login.css";
 import { useNavigate } from 'react-router-dom';
-//import logo from "../../images/Logo.png";
+import logo from "../../images/Logo.png";
 import showImg from "../../images/open-eye.png";
 import hideImg from "../../images/close-eye.png";
 
@@ -44,7 +44,7 @@ function Login() {
   //////////////////////////////////////////////////////////////////////////////
   return (
     <div className="login">
-{/*       <img src={logo} alt="Logo" /> */}
+      <img src={logo} alt="Logo" />
       
         <form action="">
           <input
