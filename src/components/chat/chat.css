@@ -45,7 +45,7 @@
   .chat .sidebar {
     display: flex;
     width: 180px;
-    background-color: green;
+    background-color: yellow;
     flex-direction: column;
     overflow-y: scroll;
     height: initial;
