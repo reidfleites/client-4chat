@@ -16,10 +16,10 @@ export default function validation (values) {
     errors.password = 'Password needs to be 6 characters or more';
   }
 
-  if (!values.password2) {
-    errors.password2 = 'Password is required';
-  } else if (values.password2 !== values.password) {
-    errors.password2 = 'Passwords do not match';
+  if (!values.passwordconfirm) {
+    errors.passwordconfirm = 'Password is required';
+  } else if (values.passwordconfirm !== values.password) {
+    errors.passwordconfirm = 'Passwords do not match';
   }
 
   return errors;
