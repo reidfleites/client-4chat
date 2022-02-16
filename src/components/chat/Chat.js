@@ -169,6 +169,7 @@ function Chat() {
     getCurrentUser();
     }
     getAllUsers();
+    setRoom('general');
     /*
     const chat = JSON.parse(localStorage.getItem("currentChat"));
     if (chat) {
