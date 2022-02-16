@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   max-height: 20vh;
+  margin-bottom: 5px;
 }
 .chat .chat_header img {
   width: 80px;
@@ -37,14 +38,18 @@
   text-transform: uppercase;
   margin: 2px 0 0 0;
   padding: 5px;
-  background-color: #fbf3e4;
+  background-color: inherit;
+}
+.chat .chat_header .chat_headerInfo section button .logoutbtn {
+  width: 20px;
+  height: 20px;
 }
 .chat .menue {
   display: none;
 }
 .chat .sidebar {
   display: flex;
-  width: 200px;
+  width: 250px;
   background-color: #dfd8ca;
   flex-direction: column;
   height: initial;
@@ -264,8 +269,6 @@
     background-color: #105652;
     display: flex;
     justify-content: space-between;
-    max-height: 15vh;
-    width: 100%;
   }
   .chat .menue .rooms_Dropdown {
     overflow: hidden;
@@ -338,12 +341,10 @@
     background-color: peru;
   }
   .chat .container {
-    display: flex;
-    max-height: 80vh;
+    height: 75vh;
   }
   .chat .container .chat-box {
     display: flex;
-    flex: auto;
   }
   .chat .container .chat-box .messages-box {
     overflow-y: scroll;

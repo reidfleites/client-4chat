@@ -10,6 +10,8 @@ $d: #105652;
     display: flex;
     justify-content: space-between;
     max-height: 20vh;
+    margin-bottom: 5px;
+
     img {
       width: 80px;
       height: 80px;
@@ -37,7 +39,11 @@ $d: #105652;
           text-transform: uppercase;
           margin: 2px 0 0 0;
           padding: 5px;
-          background-color: $c;
+          background-color: inherit;
+          .logoutbtn {
+            width: 20px;
+            height: 20px;
+          }
         }
       }
     }
@@ -47,7 +53,7 @@ $d: #105652;
   }
   .sidebar {
     display: flex;
-    width: 200px;
+    width: 250px;
     background-color: $b;
     flex-direction: column;
     height: initial;
@@ -183,8 +189,6 @@ $d: #105652;
             margin-left: 20px;
             text-align: right;
             color: rgb(243, 237, 237);
-            span {
-            }
           }
         }
 
@@ -224,8 +228,6 @@ $d: #105652;
             margin-left: 20px;
             text-align: right;
             color: rgb(110, 97, 97);
-            span {
-            }
           }
         }
       }
@@ -286,8 +288,6 @@ $d: #105652;
       background-color: $d;
       display: flex;
       justify-content: space-between;
-      max-height: 15vh;
-      width: 100%;
 
       //rooms
       .rooms_Dropdown {
@@ -368,11 +368,9 @@ $d: #105652;
       }
     }
     .container {
-      display: flex;
-      max-height: 80vh;
+      height: 75vh;
       .chat-box {
         display: flex;
-        flex: auto;
         .messages-box {
           overflow-y: scroll;
           overflow-x: hidden;
