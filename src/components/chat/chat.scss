@@ -42,141 +42,80 @@ $d: #105652;
       }
     }
   }
-  @media (min-width: 640px) {
-    .menue {
-      display: none;
-    }
-    .sidebar {
-      display: flex;
-      width: 180px;
-      background-color: yellow;
-      flex-direction: column;
-      overflow-y: scroll;
-      height:initial;
-
-      .rooms {
-        text-align: center;
-
-        ul {
-          padding: 0;
-          margin: 0;
-
-          .icon-notification {
-            color: #b91646;
-            padding-left: 5px;
-          }
-        }
-      }
-
-      .user-online-list {
-        border-top: 1px solid $d;
-        margin-top: 10vh;
-      }
-    }
+  .menue {
+    display: none;
   }
+  .sidebar {
+    display: flex;
+    width: 200px;
+    background-color: $b;
+    flex-direction: column;
+    height: initial;
+    overflow-y: scroll;
 
-  @media (max-width: 640px) {
-    .sidebar{
-      display: none;
-    }
-    .menue {
-      overflow: hidden;
-      background-color: $d;
-      display: flex;
-      justify-content: space-between;
-      max-height: 15vh;
-      width: 100%;
-
-      //rooms
-      .rooms_Dropdown {
-        overflow: hidden;
-
-        .dropbtn {
-          font-size: 16px;
-          color: white;
-          padding: 14px 16px;
-          background-color: inherit;
-          border: none;
-        }
-        &:hover {
-          background-color: peru;
-          .dropdown-content {
-            display: block;
-          }
-        }
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: $b;
-          line-height: 30px;
-          width: 90px;
-          // box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          z-index: 1;
-          ul {
-            text-align: left;
-            padding: 0 10px;
-            li {
-              list-style: none;
-            }
-            &:hover {
-              background-color: peru;
-            }
-          }
-        }
+    .rooms {
+      text-align: center;
+      p {
+        font-size: 1.5em;
+        font-weight: bold;
+        background-color: #cac6bd;
+        padding: 10px 0;
+        margin-top: 0;
       }
 
-      //online users
-      .onlineUsers_Dropdown {
-        overflow: hidden;
+      ul {
+        padding: 0;
+        margin: 0;
+        li {
+          margin-top: 15px;
+          list-style: none;
+          display: block;
 
-        .dropbtn {
-          font-size: 16px;
-          color: white;
-          padding: 14px 16px;
-          background-color: inherit;
-          border: none;
-        }
-        &:hover {
-          background-color: peru;
-          .dropdown-content {
-            display: block;
+          &:hover {
+            font-weight: bold;
+            cursor: pointer;
           }
         }
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: $b;
-          line-height: 30px;
-          width: 90px;
-          z-index: 1;
-          max-height: 40%;
-          overflow-y: scroll;
-          ul {
-            text-align: left;
-            padding: 0 10px;
-            li {
-              list-style: none;
-            }
-            &:hover {
-              background-color: peru;
-            }
-          }
+
+        .icon-notification {
+          color: #b91646;
+          padding-left: 5px;
         }
       }
     }
-    .container {
-      display: flex;
-      margin: 0;
-      padding: 0;
-      min-height: 80vh;
-      .chat-box {
-        display: flex;
-        flex: auto;
-        overflow-y: scroll;
-        max-height: 80vh;
-        .messages-box {
-          overflow-y: scroll;
-          overflow-x: hidden;
+
+    .user-online-list {
+      border-top: 1px solid gray;
+      margin-top: 10vh;
+      p {
+        font-size: 1.5em;
+        font-weight: bold;
+        background-color: #cac6bd;
+        padding: 10px 0;
+        margin-top: 0;
+        text-align: center;
+      }
+      ul {
+        padding-left: 25px;
+        list-style: none;
+
+        li {
+          padding: 5px 0;
+          &:hover {
+            font-weight: bold;
+            cursor: pointer;
+          }
+          &::before {
+            content: "• ";
+            color: red; /* or whatever color you prefer */
+          }
+
+          .message-notification {
+            background-color: red;
+            padding: 4px;
+            border-radius: 50%;
+            margin-left: 5px;
+          }
         }
       }
     }
@@ -196,9 +135,11 @@ $d: #105652;
       display: flex;
       flex: auto;
       flex-direction: column;
-      overflow-y: scroll;
 
       .messages-box {
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
         overflow-y: scroll;
         overflow-x: hidden;
         margin: 0px;
@@ -292,11 +233,23 @@ $d: #105652;
       height: 64px;
       border-top: 1px solid gray;
       padding: 0 20px;
+      .picker {
+        position: absolute;
+        margin-bottom: 380px;
+        .emoji-picker-react {
+          width: 550px;
+        }
+      }
       .emoji {
         width: 2em;
         height: 2em;
         color: gray;
+        &:hover {
+          cursor: pointer;
+          color: black;
+        }
       }
+
       input {
         display: flex;
         flex: auto;
@@ -306,12 +259,130 @@ $d: #105652;
         border: 1px solid gray;
         background-color: rgb(253, 253, 253);
       }
+
       button {
-        cursor: pointer;
         border: none;
         font-size: 20px;
         color: rgb(90, 87, 87);
         background-color: white;
+        &:hover {
+          cursor: pointer;
+          color: black;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .sidebar {
+      display: none;
+    }
+    .menue {
+      overflow: hidden;
+      background-color: $d;
+      display: flex;
+      justify-content: space-between;
+      max-height: 15vh;
+      width: 100%;
+
+      //rooms
+      .rooms_Dropdown {
+        overflow: hidden;
+
+        .dropbtn {
+          font-size: 16px;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          border: none;
+        }
+        &:hover {
+          background-color: peru;
+          .dropdown-content {
+            display: block;
+          }
+        }
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: $b;
+          line-height: 30px;
+          width: 90px;
+          // box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+          ul {
+            text-align: left;
+            padding: 0 10px;
+            .icon-notification {
+              color: #b91646;
+              padding-left: 5px;
+            }
+            li {
+              list-style: none;
+              &:hover {
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+
+      //online users
+      .onlineUsers_Dropdown {
+        overflow: hidden;
+
+        .dropbtn {
+          font-size: 16px;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          border: none;
+        }
+        &:hover {
+          background-color: peru;
+          .dropdown-content {
+            display: block;
+          }
+        }
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: $b;
+          line-height: 30px;
+          width: 90px;
+          z-index: 1;
+          max-height: 40%;
+          overflow-y: scroll;
+
+          li {
+            list-style: none;
+          }
+          &:hover {
+            background-color: peru;
+          }
+        }
+      }
+    }
+    .container {
+      display: flex;
+      max-height: 80vh;
+      .chat-box {
+        display: flex;
+        flex: auto;
+        .messages-box {
+          overflow-y: scroll;
+          overflow-x: hidden;
+        }
+      }
+    }
+
+    .picker {
+      position: absolute;
+      margin-bottom: 380px;
+
+      .emoji-picker-react {
+        height: 320px;
+        max-width: 250px;
       }
     }
   }
