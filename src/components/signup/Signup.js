@@ -1,6 +1,7 @@
 import "./signup.css";
 import validate from "./validation";
 import { useState } from "react";
+import Navbar from "../../components/navbar/Navbar";
 import logo from "../../images/Logo.png";
 import showImg from "../../images/open-eye.png";
 import hideImg from "../../images/close-eye.png";
@@ -57,6 +58,9 @@ function Signup() {
   };
   return (
     <div className="signup">
+      <div>
+        <Navbar />
+      </div>
       <img src={logo} alt="Logo" />
       <form action="" onSubmit={handleSubmit}>
         <input
@@ -94,7 +98,7 @@ function Signup() {
             onClick={() => setIsRevealPwd((prevState) => !prevState)}
           />
         </div>
-        
+
         <div className="pwd-container-confirm">
           <input
             name="passwordconfirm"
@@ -104,7 +108,8 @@ function Signup() {
             onChange={handleChange}
           />
           {errors.passwordconfirm && <p>{errors.passwordconfirm}</p>}
-          <img className="img2"
+          <img
+            className="img2"
             alt="Hide password"
             title={isReveal ? "Hide password" : "Show password"}
             src={isReveal ? hideImg : showImg}

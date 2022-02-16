@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
+// import Navbar from "./components/navbar/Navbar";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 import Chat from "./components/chat/Chat";
@@ -13,9 +13,7 @@ function App() {
     <div className="app">
       <MyProvider>
         <AllUsersProvider>
-          <div>
-            <Navbar />
-          </div>
+        
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />

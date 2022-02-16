@@ -160,19 +160,21 @@
   margin: 5px 0;
 }
 .chat .container .chat-box .messages-box .myMessage .messages .msg_name .messageText {
-  background-color: green;
+  background-color: #b91646;
   padding: 10px;
   margin-top: 0;
   border-radius: 10px;
-  color: white;
+  color: black;
   min-width: 100px;
   min-height: 30px;
+  font-size: 13px;
 }
 .chat .container .chat-box .messages-box .myMessage .messageDetails {
   font-size: 10px;
   margin-top: 10px;
   margin-left: 20px;
   text-align: right;
+  color: #f3eded;
 }
 .chat .container .chat-box .messages-box .message {
   display: flex;
@@ -195,12 +197,13 @@
   margin: 10px 0;
 }
 .chat .container .chat-box .messages-box .message .messages .msg_name .messageText {
-  background-color: #805e00;
+  background-color: #dfd8ca;
   padding: 10px;
   margin-top: 0;
   border-radius: 10px;
   color: black;
   min-width: 100px;
+  font-size: 13px;
 }
 .chat .container .chat-box .messages-box .message .messageDetails {
   font-size: 10px;
@@ -208,6 +211,7 @@
   margin-top: 10px;
   margin-left: 20px;
   text-align: right;
+  color: #6e6161;
 }
 .chat .container .footer-chat-box {
   display: flex;
