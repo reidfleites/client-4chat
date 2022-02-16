@@ -49,7 +49,7 @@ function Chat() {
   //Random Avatar
   //const [seed, setSeed] = useState("");
   //get current User
-  /*
+  
   const getCurrentUser = async () => {
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/currentUser`, {
       method: "GET",
@@ -59,7 +59,7 @@ function Chat() {
     console.log(user);
     setCurrentUser({ ...user });
   };
-  */
+  
   //set allUser array
   const getAllUsers = async () => {
     const response = await fetch(
@@ -141,8 +141,6 @@ function Chat() {
   }, [roomNotification]);
 
   useEffect(() => {
-    //const avatar = Math.floor(Math.random() * 5000);
-    //setSeed(avatar);
     socket.current.emit("add user", currentUser._id, currentUser.username,currentUser.avatar);
     socket.current.on("onlineUsers", (onlineUsers) => {
       const myOnlineUsersList = onlineUsers.filter(
@@ -167,7 +165,9 @@ function Chat() {
   }, [currentChat]);
 
   useEffect(() => {
-   // getCurrentUser();
+    if(currentUser.username===""){
+    getCurrentUser();
+    }
     getAllUsers();
     /*
     const chat = JSON.parse(localStorage.getItem("currentChat"));
@@ -325,6 +325,7 @@ function Chat() {
         <img src={logo} alt="Logo" />
         <div className="chat_headerInfo">
           <section>
+            <button onClick={getCurrentUser}>currentUser</button>
             <h3>
               {currentUser.username}
               {allUsers.length}
