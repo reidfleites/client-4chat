@@ -8,8 +8,6 @@ import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
-//coment für deploy
-//2 comment
 import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
@@ -32,11 +30,11 @@ function Chat() {
   const [receiver, setReceiverId] = useState("");
   const [newMessage, setNewMessage] = useState("");
   const [room, setRoom] = useState("");
-  const [allUsers, setAllUsers] = useState([]);
   const navigate = useNavigate();
   const [showPicker, setShowPicker] = useState(false);
   const [notification, setNotification] = useState(false);
   const [roomNotification, setRoomNotification] = useState(false);
+  const [allUsers, setAllUsers] = useState([]);
   const socket = useRef();
   const scrollRef = useRef();
   const [rooms, setRooms] = useState([]);
@@ -49,17 +47,14 @@ function Chat() {
   //Random Avatar
   //const [seed, setSeed] = useState("");
   //get current User
-  /*
   const getCurrentUser = async () => {
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/currentUser`, {
       method: "GET",
       credentials: "include",
     });
     const user = await response.json();
-    console.log(user);
     setCurrentUser({ ...user });
   };
-  */
   //set allUser array
   const getAllUsers = async () => {
     const response = await fetch(
@@ -76,20 +71,17 @@ function Chat() {
   };
   //return User from  allUser
   const getUser = (id) => {
-      let user = onlineUsers.find((user) => user.id === id);
-      if(!user){
-        user = allUsers.find((user) => user._id === id);
-      }
+    if (allUsers.length > 0) {
+      const user = allUsers.find((user) => user._id === id);
       return user.username;
-     };
+    }
+  };
   //retun avatar number
   const getAvatar = (id) => {
-      let user = onlineUsers.find((user) => user.id === id);
-      if(user===undefined){
-       user = allUsers.find((user) => user._id === id); 
-      }
+    if (allUsers.length > 0) {
+      const user = allUsers.find((user) => user._id === id);
       return user.avatar;
-    
+    }
   };
 
   useEffect(() => {
@@ -143,7 +135,7 @@ function Chat() {
   useEffect(() => {
     //const avatar = Math.floor(Math.random() * 5000);
     //setSeed(avatar);
-    socket.current.emit("add user", currentUser._id, currentUser.username,currentUser.avatar);
+    socket.current.emit("add user", currentUser._id, currentUser.username);
     socket.current.on("onlineUsers", (onlineUsers) => {
       const myOnlineUsersList = onlineUsers.filter(
         (user) => user.id !== currentUser._id
@@ -157,24 +149,19 @@ function Chat() {
   }, [socket, currentUser]);
 
   useEffect(() => {
-    
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-    /*
     if (currentChat.length > 0) {
       localStorage.setItem("currentChat", JSON.stringify(currentChat));
     }
-    */
   }, [currentChat]);
 
   useEffect(() => {
-   // getCurrentUser();
+    getCurrentUser();
     getAllUsers();
-    /*
     const chat = JSON.parse(localStorage.getItem("currentChat"));
     if (chat) {
       setCurrentChat([...chat]);
     }
-    */
   }, []);
 
   useEffect(() => {
@@ -328,7 +315,6 @@ function Chat() {
             <h3>
               {currentUser.username}
               {allUsers.length}
-              
             </h3>
             <button onClick={logout}>logout</button>
           </section>
@@ -339,23 +325,22 @@ function Chat() {
           />
         </div>
       </div>
+      {/* Handy Version */}
       <div className="menue">
         <div className="rooms_Dropdown">
           <button className="dropbtn">Rooms</button>
           <div className="dropdown-content">
             <ul>
-              <li>
-                {rooms.map((r, index) => {
-                  return (
-                    <div onClick={() => showRoomChat(r.room)} key={index}>
-                      {r.room}
-                      {r.newMessage && (
-                        <BsFillChatFill className="icon-notification" />
-                      )}
-                    </div>
-                  );
-                })}
-              </li>
+              {rooms.map((r, index) => {
+                return (
+                  <li onClick={() => showRoomChat(r.room)} key={index}>
+                    {r.room}
+                    {r.newMessage && (
+                      <BsFillChatFill className="icon-notification" />
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -382,39 +367,40 @@ function Chat() {
         </div>
       </div>
       <fieldset className="container">
+        {/* Desktop version */}
         <div className="sidebar">
           <div className="rooms">
-            <h3>Rooms</h3>
+            <p>Rooms</p>
             <ul>
-                {rooms.map((r, index) => {
-                  return (
-                    <div onClick={() => showRoomChat(r.room)} key={index}>
-                      {r.room}
-                      {r.newMessage && (
-                        <BsFillChatFill className="icon-notification" />
-                      )}
-                    </div>
-                  );
-                })}
-            </ul>
-          </div>
-          <div>
-            <div className="user-online-list">
-              <ul>
-                <h3>Online Users</h3>
-              </ul>
-              {onlineUsers.map((user, index) => {
+              {rooms.map((r, index) => {
                 return (
-                  <li onClick={() => setBoxChat(user.id)} key={index}>
-                    {user.username}
-                    {user.countMessage > 0 && (
-                      <span className="message-notification">
-                        {user.countMessage}
-                      </span>
+                  <li onClick={() => showRoomChat(r.room)} key={index}>
+                    {r.room}
+                    {r.newMessage && (
+                      <BsFillChatFill className="icon-notification" />
                     )}
                   </li>
                 );
               })}
+            </ul>
+          </div>
+          <div>
+            <div className="user-online-list">
+              <p>Online Users</p>
+              <ul>
+                {onlineUsers.map((user, index) => {
+                  return (
+                    <li onClick={() => setBoxChat(user.id)} key={index}>
+                      {user.username}
+                      {user.countMessage > 0 && (
+                        <span className="message-notification">
+                          {user.countMessage}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </div>
@@ -448,7 +434,7 @@ function Chat() {
                             //                       //format(message.createdAt)
                             dateFormat(
                               message.createdAt,
-                              "dddd,h:MM:ss TT"
+                              "dddd,h:MM TT"
                               // "dddd, mmmm dS, yyyy, h:MM:ss TT"
                             )
                           }
@@ -462,19 +448,17 @@ function Chat() {
               );
             })}
           </div>
+
           <div className="footer-chat-box">
+            <div className="picker">
+              {showPicker && <Picker onEmojiClick={onEmojiClick} />}
+            </div>
             <FaRegSmile
               onClick={() => setShowPicker((val) => !val)}
               className="emoji"
             />
             <input type="text" value={newMessage} onChange={handleNewMessage} />
-            {showPicker && (
-              <Picker
-                className="test"
-                pickerStyle={{ width: "25%" }}
-                onEmojiClick={onEmojiClick}
-              />
-            )}
+
             <button onClick={sendMessage}>
               <FiSend />
             </button>
