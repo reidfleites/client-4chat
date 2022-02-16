@@ -4,6 +4,11 @@
   margin: auto;
   color: #b91646;
 }
+.signup img {
+  display: flex;
+  width: 150px;
+  margin: 10px auto;
+}
 .signup form input {
   background-color: #dfd8ca;
   width: 100%;
@@ -20,6 +25,28 @@
 .signup form input:focus {
   background-color: #fbf3e4;
   outline: none;
+}
+.signup form .pwd-container {
+  position: relative;
+}
+.signup form .pwd-container img {
+  cursor: pointer;
+  position: absolute;
+  width: 20px;
+  right: 15px;
+  top: 15px;
+  opacity: 0.7;
+}
+.signup form .pwd-container-confirm {
+  position: relative;
+}
+.signup form .pwd-container-confirm .img2 {
+  cursor: pointer;
+  position: absolute;
+  width: 20px;
+  right: 15px;
+  top: 15px;
+  opacity: 0.7;
 }
 .signup form button {
   background: #b91646;

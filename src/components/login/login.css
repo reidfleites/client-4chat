@@ -4,6 +4,11 @@
   margin: auto;
   color: #b91646;
 }
+.login img {
+  display: flex;
+  width: 150px;
+  margin: 10px auto;
+}
 .login form input {
   background-color: #dfd8ca;
   width: 100%;
@@ -21,10 +26,10 @@
   background-color: #fbf3e4;
   outline: none;
 }
-.login form div {
+.login form .pwd-container {
   position: relative;
 }
-.login form div img {
+.login form .pwd-container img {
   cursor: pointer;
   position: absolute;
   width: 20px;
