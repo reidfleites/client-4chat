@@ -338,7 +338,6 @@ function Chat() {
         <img src={logo} alt="Logo" />
         <div className="chat_headerInfo">
           <section>
-            <button onClick={getCurrentUser}>currentUser</button>
             <h3>
               {currentUser.username}
               {allUsers.length}
