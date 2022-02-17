@@ -2,7 +2,6 @@ import { AppContext } from "../context/AppContext";
 import { useState, useContext } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/navbar/Navbar";
 import logo from "../../images/Logo.png";
 import showImg from "../../images/open-eye.png";
 import hideImg from "../../images/close-eye.png";
@@ -37,17 +36,11 @@ function Login() {
       setCurrentUser({ ...user });
       navigate("/chat");
     }
-
-    //////////make a real database connection ////////////////////////
   };
 
-  //////////////////////////////////////////////////////////////////////////////
   return (
     <div className="login">
-      <div>
-        <Navbar />
-      </div>
-      <img src={logo} alt="Logo" />
+      {/* <img src={logo} alt="Logo" /> */}
 
       <form action="">
         <input
