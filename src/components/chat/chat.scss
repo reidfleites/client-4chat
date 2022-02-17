@@ -10,6 +10,8 @@ $d: #105652;
     display: flex;
     justify-content: space-between;
     max-height: 20vh;
+    margin-bottom: 5px;
+
     img {
       width: 80px;
       height: 80px;
@@ -37,7 +39,11 @@ $d: #105652;
           text-transform: uppercase;
           margin: 2px 0 0 0;
           padding: 5px;
-          background-color: $c;
+          background-color: inherit;
+          .logoutbtn {
+            width: 20px;
+            height: 20px;
+          }
         }
       }
     }
@@ -47,7 +53,7 @@ $d: #105652;
   }
   .sidebar {
     display: flex;
-    width: 200px;
+    width: 250px;
     background-color: $b;
     flex-direction: column;
     height: initial;
@@ -153,25 +159,27 @@ $d: #105652;
           flex-direction: row-reverse;
           .messages {
             display: flex;
+            flex-direction: row-reverse;
             align-items: center;
             .messageImg {
               width: 32px;
               height: 32px;
               border-radius: 50%;
               object-fit: cover;
-              margin-right: 10px;
+              margin-left: 5px;
             }
             .msg_name {
               padding: 0;
               margin: 5px 0;
               .messageText {
-                background-color: green;
+                background-color: $a;
                 padding: 10px;
                 margin-top: 0;
                 border-radius: 10px;
-                color: white;
+                color: black;
                 min-width: 100px;
                 min-height: 30px;
+                font-size: 13px;
               }
             }
           }
@@ -180,8 +188,7 @@ $d: #105652;
             margin-top: 10px;
             margin-left: 20px;
             text-align: right;
-            span {
-            }
+            color: rgb(243, 237, 237);
           }
         }
 
@@ -198,18 +205,19 @@ $d: #105652;
               height: 32px;
               border-radius: 50%;
               object-fit: cover;
-              margin-right: 10px;
+              margin-right: 5px;
             }
             .msg_name {
               padding: 0;
               margin: 10px 0;
               .messageText {
-                background-color: rgb(128, 94, 0);
+                background-color: $b;
                 padding: 10px;
                 margin-top: 0;
                 border-radius: 10px;
                 color: black;
                 min-width: 100px;
+                font-size: 13px;
               }
             }
           }
@@ -219,9 +227,7 @@ $d: #105652;
             margin-top: 10px;
             margin-left: 20px;
             text-align: right;
-
-            span {
-            }
+            color: rgb(110, 97, 97);
           }
         }
       }
@@ -237,7 +243,7 @@ $d: #105652;
         position: absolute;
         margin-bottom: 380px;
         .emoji-picker-react {
-          width: 550px;
+          width: 450px;
         }
       }
       .emoji {
@@ -282,8 +288,6 @@ $d: #105652;
       background-color: $d;
       display: flex;
       justify-content: space-between;
-      max-height: 15vh;
-      width: 100%;
 
       //rooms
       .rooms_Dropdown {
@@ -364,11 +368,9 @@ $d: #105652;
       }
     }
     .container {
-      display: flex;
-      max-height: 80vh;
+      height: 75vh;
       .chat-box {
         display: flex;
-        flex: auto;
         .messages-box {
           overflow-y: scroll;
           overflow-x: hidden;

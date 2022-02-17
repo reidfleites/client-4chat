@@ -16,6 +16,7 @@ import selectSound from "../data/selectsound.wav";
 //import { format } from "timeago.js";
 import { BsFillChatFill } from "react-icons/bs";
 import dateFormat from "dateformat";
+import logoutbtn from "../../images/logout.png";
 
 // import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
 // import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
@@ -52,10 +53,13 @@ function Chat() {
   //get current User
 
   const getCurrentUser = async () => {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/currentUser`, {
-      method: "GET",
-      credentials: "include",
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/currentUser`,
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    );
     const user = await response.json();
     setCurrentUser({ ...user });
   };
@@ -142,7 +146,12 @@ function Chat() {
   }, [roomNotification]);
 
   useEffect(() => {
-    socket.current.emit("add user", currentUser._id, currentUser.username,currentUser.avatar);
+    socket.current.emit(
+      "add user",
+      currentUser._id,
+      currentUser.username,
+      currentUser.avatar
+    );
     socket.current.on("onlineUsers", (onlineUsers) => {
       const myOnlineUsersList = onlineUsers.filter(
         (user) => user.id !== currentUser._id
@@ -163,8 +172,8 @@ function Chat() {
   }, [currentChat]);
 
   useEffect(() => {
-    if(currentUser.username===""){
-    getCurrentUser();
+    if (currentUser.username === "") {
+      getCurrentUser();
     }
     getAllUsers();
     setRoom('general');
@@ -274,14 +283,17 @@ function Chat() {
         to: receiver,
         text: newMessage,
       });
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/addMessage`, {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: { from: currentUser._id, to: receiver, text: newMessage },
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/addMessage`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: { from: currentUser._id, to: receiver, text: newMessage },
+          }),
+        }
+      );
       if (response.ok) {
         const data = await response.json();
         setCurrentChat([...currentChat, data]);
@@ -331,7 +343,10 @@ function Chat() {
               {currentUser.username}
               {allUsers.length}
             </h3>
-            <button onClick={logout}>logout</button>
+
+            <button onClick={logout}>
+              <img className="logoutbtn" src={logoutbtn} alt="logout" />
+            </button>
           </section>
           <Avatar
             className="avatar"
