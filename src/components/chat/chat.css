@@ -21,23 +21,23 @@
   width: 60px;
   height: 60px;
   margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .chat .chat_header .chat_headerInfo section {
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 7vh;
+  justify-content: space-around;
+  height: 6vh;
 }
 .chat .chat_header .chat_headerInfo section h3 {
   margin: 0;
-  text-align: center;
 }
 .chat .chat_header .chat_headerInfo section button {
   border: none;
   text-transform: uppercase;
   margin: 2px 0 0 0;
-  padding: 5px;
   background-color: inherit;
 }
 .chat .chat_header .chat_headerInfo section button .logoutbtn {
