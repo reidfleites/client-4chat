@@ -13,6 +13,7 @@ $d: #105652;
     margin-bottom: 5px;
 
     img {
+      
       width: 80px;
       height: 80px;
     }
@@ -23,22 +24,21 @@ $d: #105652;
         width: 60px;
         height: 60px;
         margin: auto;
+        object-fit: cover;
       }
       section {
         margin: auto;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        height: 7vh;
+        justify-content: space-around;
+        height: 6vh;
         h3 {
           margin: 0;
-          text-align: center;
         }
         button {
           border: none;
           text-transform: uppercase;
           margin: 2px 0 0 0;
-          padding: 5px;
           background-color: inherit;
           .logoutbtn {
             width: 20px;

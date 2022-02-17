@@ -38,21 +38,21 @@ function App() {
     //   <>
     //     <GlobalStyles />
     //     <Toggle theme={theme} toggleTheme={themeToggler} />
-    <div className="app">
-      <MyProvider>
-        <AllUsersProvider>
-          <div>
-            <Navbar />
-          </div>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/verify" element={<Verified />} />
-          </Routes>
-        </AllUsersProvider>
-      </MyProvider>
-    </div>
+        <div className="app">
+          <MyProvider>
+            <AllUsersProvider>
+              <div>
+                <Navbar />
+              </div>
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/chat" element={<Chat />} />
+                <Route path="/verify" element={<Verified />} />
+              </Routes>
+            </AllUsersProvider>
+          </MyProvider>
+        </div>
     //   </>
     // </ThemeProvider>
   );
