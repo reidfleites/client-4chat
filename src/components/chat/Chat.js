@@ -12,6 +12,7 @@ import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
+import selectSound from "../data/selectsound.wav";
 //import { format } from "timeago.js";
 import { BsFillChatFill } from "react-icons/bs";
 import dateFormat from "dateformat";
@@ -25,7 +26,8 @@ import darkMode from "../../images/night-mode.png";
 // import MicIcon from "@material-ui/icons/Mic";
 //import MenuIcon from "@material-ui/icons/Menu";
 function Chat() {
-  const [play] = useSound(sound);
+//const [play] = useSound(sound);
+  const [play2]=useSound(selectSound);
   const [currentUser, setCurrentUser] = useContext(AppContext);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [currentChat, setCurrentChat] = useState([]);
@@ -42,6 +44,7 @@ function Chat() {
   const socket = useRef();
   const scrollRef = useRef();
   const [rooms, setRooms] = useState([]);
+  const audio=new Audio();
   /*
   const [rooms, setRooms] = useState([
     { room: "general", newMessage: false },
@@ -104,7 +107,10 @@ function Chat() {
         text: data.text,
         createdAt: Date.now(),
       });
-      play();
+     audio.src=sound;
+     audio.play();
+     
+      
     });
     socket.current.on("messageArrived", (data) => {
       setArrivedMessage({
@@ -113,7 +119,8 @@ function Chat() {
         text: data.text,
         createdAt: Date.now(),
       });
-      play();
+         audio.src = sound;
+         audio.play();
     });
   }, []);
   useEffect(() => {
@@ -171,12 +178,14 @@ function Chat() {
     if (currentUser.username === "") {
       getCurrentUser();
     }
-
     getAllUsers();
+    setRoom('general');
+    /*
     const chat = JSON.parse(localStorage.getItem("currentChat"));
     if (chat) {
       setCurrentChat([...chat]);
     }
+    */
   }, []);
 
   useEffect(() => {
@@ -298,6 +307,7 @@ function Chat() {
   const setBoxChat = (userId) => {
     setReceiverId(userId);
     setRoom("");
+    play2();
   };
 
   const logout = async () => {
@@ -322,6 +332,7 @@ function Chat() {
   const showRoomChat = async (room) => {
     setRoom(room);
     setReceiverId("");
+    play2();
   };
 
   //Dark Mode
