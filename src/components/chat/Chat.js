@@ -17,6 +17,9 @@ import selectSound from "../data/selectsound.wav";
 import { BsFillChatFill } from "react-icons/bs";
 import dateFormat from "dateformat";
 import logoutbtn from "../../images/logout.png";
+import useLocalStorage from "use-local-storage";
+import lightMode from "../../images/solid-black-sun-symbol.png";
+import darkMode from "../../images/night-mode.png";
 
 // import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
 // import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
@@ -332,10 +335,22 @@ function Chat() {
     play2();
   };
 
+  //Dark Mode
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   return (
-    <div className="chat">
+    <div className="chat" data-theme={theme}>
       <div className="chat_header">
-        <img src={logo} alt="Logo" />
+        <img className="logo" src={logo} alt="Logo" />
         <div className="chat_headerInfo">
           <section>
             <h3>
@@ -346,6 +361,13 @@ function Chat() {
             <button onClick={logout}>
               <img className="logoutbtn" src={logoutbtn} alt="logout" />
             </button>
+            <div className="darkmode" onClick={switchTheme}>
+              {theme === "light" ? (
+                <img src={darkMode} alt="Logo" />
+              ) : (
+                <img src={lightMode} alt="Logo" />
+              )}
+            </div>
           </section>
           <Avatar
             className="avatar"
@@ -432,6 +454,10 @@ function Chat() {
               </ul>
             </div>
           </div>
+
+          {/* <button onClick={switchTheme}>
+            Switch to {theme === "light" ? "Dark" : "Light"} Theme
+          </button> */}
         </div>
         <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
         <div className="chat-box">

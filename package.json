@@ -20,6 +20,7 @@
     "socket.io-client": "^4.4.1",
     "styled-components": "^5.3.3",
     "timeago.js": "^4.0.0-beta.3",
+    "use-local-storage": "^2.2.6",
     "use-sound": "^4.0.1",
     "web-vitals": "^2.1.3"
   },
