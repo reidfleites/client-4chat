@@ -1,17 +1,19 @@
 @charset "UTF-8";
 .chat {
+  background: var(--background);
   font-size: 12px;
   max-height: 100vh;
 }
 .chat .chat_header {
   display: flex;
   justify-content: space-between;
-  max-height: 20vh;
-  margin-bottom: 5px;
+  height: 15vh;
+  margin: 0 30px;
 }
-.chat .chat_header img {
-  width: 80px;
-  height: 80px;
+.chat .chat_header .logo {
+  width: 100px;
+  height: 100px;
+  margin: auto 0;
 }
 .chat .chat_header .chat_headerInfo {
   display: flex;
@@ -44,13 +46,17 @@
   width: 20px;
   height: 20px;
 }
+.chat .chat_header .chat_headerInfo section .darkmode img {
+  width: 20px;
+  height: 20px;
+}
 .chat .menue {
   display: none;
 }
 .chat .sidebar {
   display: flex;
   width: 250px;
-  background-color: #dfd8ca;
+  background-color: var(--sidebar);
   flex-direction: column;
   height: initial;
   overflow-y: scroll;
@@ -341,7 +347,7 @@
     background-color: peru;
   }
   .chat .container {
-    height: 75vh;
+    max-height: 80vh;
   }
   .chat .container .chat-box {
     display: flex;
