@@ -11,7 +11,7 @@ $d: #105652;
     display: flex;
     justify-content: space-between;
     height: 15vh;
-    margin: 0 30px;
+    width: 100%;
     .logo {
       width: 100px;
       height: 100px;
@@ -125,8 +125,9 @@ $d: #105652;
           .message-notification {
             background-color: red;
             padding: 4px;
-            border-radius: 50%;
+            border-radius: 20%;
             margin-left: 5px;
+            text-align: center;
           }
         }
       }
@@ -135,10 +136,11 @@ $d: #105652;
 
   .container {
     display: flex;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     height: 85vh;
-
+  
     legend {
       margin: auto;
       margin-bottom: -5px;

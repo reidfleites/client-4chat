@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   height: 15vh;
-  margin: 0 30px;
+  width: 100%;
 }
 .chat .chat_header .logo {
   width: 100px;
@@ -119,11 +119,13 @@
 .chat .sidebar .user-online-list ul li .message-notification {
   background-color: red;
   padding: 4px;
-  border-radius: 50%;
+  border-radius: 20%;
   margin-left: 5px;
+  text-align: center;
 }
 .chat .container {
   display: flex;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   height: 85vh;
