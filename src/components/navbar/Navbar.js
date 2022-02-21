@@ -11,24 +11,12 @@ function Navbar() {
       {currentUser.username === "" && (
         <ul>
           <li>
-            <NavLink
-              to="/"
-              className="link"
-              style={({ isActive }) =>
-                isActive ? { color: "#b91646" } : { color: "#b9164680" }
-              }
-            >
+            <NavLink to="/" className="inActive" activeClassName="active">
               Login
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="signup"
-              className="link"
-              style={({ isActive }) =>
-                isActive ? { color: "#b91646" } : { color: "#b9164680" }
-              }
-            >
+            <NavLink to="signup" className="inActive" activeClassName="active">
               Signup
             </NavLink>
           </li>

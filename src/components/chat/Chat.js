@@ -16,7 +16,7 @@ import selectSound from "../data/selectsound.wav";
 //import { format } from "timeago.js";
 import { BsFillChatFill } from "react-icons/bs";
 import dateFormat from "dateformat";
-import logoutbtn from "../../images/logout.png";
+import logoutBtn from "../../images/logout.png";
 import useLocalStorage from "use-local-storage";
 import lightMode from "../../images/solid-black-sun-symbol.png";
 import darkMode from "../../images/night-mode.png";
@@ -355,13 +355,13 @@ function Chat() {
           <section>
             <h3>
               {currentUser.username}
-              {allUsers.length}
+              {/* {allUsers.length} */}
             </h3>
 
             <button onClick={logout}>
-              <img className="logoutbtn" src={logoutbtn} alt="logout" />
+              <img className="logoutBtn" src={logoutBtn} alt="logout" />
             </button>
-            <div className="darkmode" onClick={switchTheme}>
+            <div className="darkMode" onClick={switchTheme}>
               {theme === "light" ? (
                 <img src={darkMode} alt="Logo" />
               ) : (
@@ -377,9 +377,9 @@ function Chat() {
         </div>
       </div>
       {/* Handy Version */}
-      <div className="menue">
+      <div className="menu">
         <div className="rooms_Dropdown">
-          <button className="dropbtn">Rooms</button>
+          <button className="dropBtn">Rooms</button>
           <div className="dropdown-content">
             <ul>
               {rooms.map((r, index) => {
@@ -397,7 +397,7 @@ function Chat() {
         </div>
 
         <div className="onlineUsers_Dropdown">
-          <button className="dropbtn">
+          <button className="dropBtn">
             Online Users
             <i className="fa fa-caret-down"></i>
           </button>

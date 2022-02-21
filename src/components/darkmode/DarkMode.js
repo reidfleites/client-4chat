@@ -2,7 +2,7 @@ import useLocalStorage from "use-local-storage";
 import lightMode from "../../images/solid-black-sun-symbol.png";
 import darkMode from "../../images/night-mode.png";
 
-function DarkMode() {
+function darkMode() {
   //Dark Mode
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
@@ -16,8 +16,8 @@ function DarkMode() {
   };
 
   return (
-    <div className="darkmode">
-      <div className="darkmode" onClick={switchTheme}>
+    <div className="darkMode">
+      <div className="darkMode" onClick={switchTheme}>
         {theme === "light" ? (
           <img src={darkMode} alt="Logo" />
         ) : (
@@ -27,4 +27,4 @@ function DarkMode() {
     </div>
   );
 }
-export default DarkMode;
+export default darkMode;

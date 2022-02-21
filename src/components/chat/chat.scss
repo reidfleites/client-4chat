@@ -40,12 +40,12 @@ $d: #105652;
           text-transform: uppercase;
           margin: 2px 0 0 0;
           background-color: inherit;
-          .logoutbtn {
+          .logoutBtn {
             width: 20px;
             height: 20px;
           }
         }
-        .darkmode {
+        .darkMode {
           img {
             width: 20px;
             height: 20px;
@@ -54,7 +54,7 @@ $d: #105652;
       }
     }
   }
-  .menue {
+  .menu {
     display: none;
   }
   .sidebar {
@@ -289,7 +289,7 @@ $d: #105652;
     .sidebar {
       display: none;
     }
-    .menue {
+    .menu {
       overflow: hidden;
       background-color: $d;
       display: flex;
@@ -299,7 +299,7 @@ $d: #105652;
       .rooms_Dropdown {
         overflow: hidden;
 
-        .dropbtn {
+        .dropBtn {
           font-size: 16px;
           color: white;
           padding: 14px 16px;
@@ -341,7 +341,7 @@ $d: #105652;
       .onlineUsers_Dropdown {
         overflow: hidden;
 
-        .dropbtn {
+        .dropBtn {
           font-size: 16px;
           color: white;
           padding: 14px 16px;
