@@ -11,7 +11,7 @@ function Signup() {
     username: "",
     email: "",
     password: "",
-    password2: "",
+    passwordconfirm: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -19,7 +19,7 @@ function Signup() {
   const [isReveal, setIsReveal] = useState(false);
 
   const clearForm = () => {
-    setValues({ username: "", email: "", password: "", password2: "" });
+    setValues({ username: "", email: "", password: "", passwordconfirm: "" });
     setErrors({});
   };
   const handleChange = (e) => {
@@ -81,6 +81,7 @@ function Signup() {
         <div className="pwd-container">
           <input
             name="password"
+            autoComplete="on"
             placeholder=" password"
             type={isRevealPwd ? "text" : "password"}
             value={values.password}
@@ -99,6 +100,7 @@ function Signup() {
         <div className="pwd-container-confirm">
           <input
             name="passwordconfirm"
+            autoComplete="on"
             placeholder=" confirm password"
             type={isReveal ? "text" : "password"}
             value={values.passwordconfirm}
