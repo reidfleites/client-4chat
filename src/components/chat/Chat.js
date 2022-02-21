@@ -8,7 +8,7 @@ import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
-import logo from "../../images/Logo.png";
+//import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
@@ -350,7 +350,7 @@ function Chat() {
   return (
     <div className="chat" data-theme={theme}>
       <div className="chat_header">
-        <img className="logo" src={logo} alt="Logo" />
+       {/*  <img className="logo" src={logo} alt="Logo" /> */}
         <div className="chat_headerInfo">
           <section>
             <h3>

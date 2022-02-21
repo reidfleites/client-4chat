@@ -7,6 +7,7 @@ import Chat from "./components/chat/Chat";
 import Verified from "./components/verified/Verified";
 import MyProvider from "./components/context/AppContext";
 import AllUsersProvider from "./components/context/AllUsersContext";
+import logo from "./images/Logo.png";
 
 //test comment
 
@@ -15,6 +16,7 @@ function App() {
     <div className="app">
       <MyProvider>
         <AllUsersProvider>
+          <img className="logo" src={logo} alt="Logo" />
           <div>
             <Navbar />
           </div>

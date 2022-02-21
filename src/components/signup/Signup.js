@@ -1,7 +1,6 @@
 import "./signup.css";
 import validate from "./validation";
 import { useState } from "react";
-// import logo from "../../images/Logo.png";
 import showImg from "../../images/open-eye.png";
 import hideImg from "../../images/close-eye.png";
 
@@ -57,8 +56,6 @@ function Signup() {
   };
   return (
     <div className="signup">
-
-      {/* <img src={logo} alt="Logo" /> */}
       <form action="" onSubmit={handleSubmit}>
         <input
           name="username"
@@ -117,6 +114,7 @@ function Signup() {
         <button type="submit">Create My Account</button>
       </form>
       <h3>{message}</h3>
+
     </div>
   );
 }
