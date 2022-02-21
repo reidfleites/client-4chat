@@ -17,7 +17,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: green;
+  background: var(--border);
 }
 
 .chat {
@@ -38,7 +38,6 @@
 }
 .chat .chat_header .chat_headerInfo {
   display: flex;
-  justify-content: flex-end;
 }
 .chat .chat_header .chat_headerInfo .avatar {
   width: 70px;
@@ -48,13 +47,12 @@
   align-items: center;
 }
 .chat .chat_header .chat_headerInfo section {
-  margin: auto;
   display: flex;
   align-items: center;
-  width: 150px;
+  width: 170px;
+  padding-top: 10px;
 }
-.chat .chat_header .chat_headerInfo section h3 {
-  margin: 0 10px;
+.chat .chat_header .chat_headerInfo section h2 {
   color: var(--text-primary);
 }
 .chat .chat_header .chat_headerInfo section button {
@@ -65,14 +63,20 @@
 .chat .chat_header .chat_headerInfo section button .logoutbtn {
   width: 20px;
   height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.274);
+  padding: 5px;
+  border-radius: 10px;
 }
 .chat .chat_header .chat_headerInfo section button:hover {
   cursor: pointer;
   opacity: 0.5;
 }
 .chat .chat_header .chat_headerInfo section .darkmode img {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.274);
+  padding: 5px;
+  border-radius: 10px;
 }
 .chat .chat_header .chat_headerInfo section .darkmode:hover {
   cursor: pointer;
@@ -83,8 +87,8 @@
 }
 .chat .sidebar {
   display: flex;
-  width: 250px;
-  background-color: var(--background);
+  width: 300px;
+  background-color: var(--sidebar);
   border-right: 2px solid var(--border);
   flex-direction: column;
   height: initial;
@@ -163,9 +167,11 @@
 }
 .chat .container legend {
   margin: auto;
-  margin-bottom: -5px;
+  margin-bottom: -10px;
+  font-size: 18px;
   color: var(--text-primary);
   z-index: 1;
+  background-color: var(--background);
 }
 .chat .container .chat-box {
   display: flex;
@@ -179,7 +185,6 @@
   overflow-y: scroll;
   overflow-x: hidden;
   margin: 0px;
-  height: 100%;
   padding: 10px;
   height: 85vh;
 }
@@ -204,7 +209,7 @@
 .chat .container .chat-box .messages-box .myMessage .messages .msg_name {
   padding: 0;
   margin: 5px 0;
-  color: var(--myMessageDetails);
+  color: var(--text-primary);
 }
 .chat .container .chat-box .messages-box .myMessage .messages .msg_name .messageText {
   background-color: var(--myMessage);
@@ -215,7 +220,6 @@
   min-width: 100px;
   min-height: 30px;
   font-size: 14px;
-  font-weight: 600;
 }
 .chat .container .chat-box .messages-box .myMessage .messageDetails {
   font-size: 10px;
@@ -242,7 +246,7 @@
 }
 .chat .container .chat-box .messages-box .message .messages .msg_name {
   margin: 10px 0;
-  color: var(--myMessageDetails);
+  color: var(--text-primary);
 }
 .chat .container .chat-box .messages-box .message .messages .msg_name .messageText {
   background-color: #dfd8ca;
@@ -251,7 +255,7 @@
   border-radius: 10px;
   color: black;
   min-width: 100px;
-  font-size: 13px;
+  font-size: 14px;
 }
 .chat .container .chat-box .messages-box .message .messageDetails {
   font-size: 10px;
@@ -365,7 +369,7 @@
     border: none;
   }
   .chat .menue .onlineUsers_Dropdown:hover {
-    background-color: peru;
+    background-color: #b91646;
   }
   .chat .menue .onlineUsers_Dropdown:hover .dropdown-content {
     display: block;
@@ -384,7 +388,7 @@
     list-style: none;
   }
   .chat .menue .onlineUsers_Dropdown .dropdown-content:hover {
-    background-color: peru;
+    background-color: #b91646;
   }
   .chat .container {
     max-height: 80vh;

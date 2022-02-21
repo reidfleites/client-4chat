@@ -20,7 +20,7 @@ import dateFormat from "dateformat";
 import logoutbtn from "../../images/logout.png";
 import useLocalStorage from "use-local-storage";
 import lightMode from "../../images/solid-black-sun-symbol.png";
-import darkMode from "../../images/night-mode.png";
+import darkMode from "../../images/moon.png";
 
 // import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
 // import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
@@ -353,10 +353,10 @@ function Chat() {
         <img className="logo" src={logo} alt="Logo" />
         <div className="chat_headerInfo">
           <section>
-            <h3>
+            <h2>
               {currentUser.username}
               {allUsers.length}
-            </h3>
+            </h2>
 
             <button title="Logout" onClick={logout}>
               <img className="logoutbtn" src={logoutbtn} alt="logout" />
