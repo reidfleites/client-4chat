@@ -4,8 +4,9 @@ import io from "socket.io-client";
 import { useRef, useEffect, useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
-import { FaRegSmile } from "react-icons/fa";
+// import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
+import emoji from "../../images/smiling-face.png";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
 import logo from "../../images/Logo.png";
@@ -510,15 +511,23 @@ function Chat() {
             <div className="picker">
               {showPicker && <Picker onEmojiClick={onEmojiClick} />}
             </div>
-            <FaRegSmile
+            <img
+              src={emoji}
+              alt="emoji"
               onClick={() => setShowPicker((val) => !val)}
               className="emoji"
             />
-            <input type="text" value={newMessage} onChange={handleNewMessage} />
 
-            <button onClick={sendMessage}>
-              <FiSend />
-            </button>
+            <form>
+              <input
+                type="text"
+                value={newMessage}
+                onChange={handleNewMessage}
+              />
+              <button type="submit" onClick={sendMessage}>
+                <FiSend />
+              </button>
+            </form>
           </div>
         </div>
       </fieldset>
