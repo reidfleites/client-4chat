@@ -4,11 +4,12 @@ import io from "socket.io-client";
 import { useRef, useEffect, useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
-import { FaRegSmile } from "react-icons/fa";
+// import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
+import emoji from "../../images/smiling-face.png";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
-//import logo from "../../images/Logo.png";
+import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
@@ -26,8 +27,8 @@ import darkMode from "../../images/night-mode.png";
 // import MicIcon from "@material-ui/icons/Mic";
 //import MenuIcon from "@material-ui/icons/Menu";
 function Chat() {
-//const [play] = useSound(sound);
-  const [play2]=useSound(selectSound);
+  //const [play] = useSound(sound);
+  const [play2] = useSound(selectSound);
   const [currentUser, setCurrentUser] = useContext(AppContext);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [currentChat, setCurrentChat] = useState([]);
@@ -44,7 +45,7 @@ function Chat() {
   const socket = useRef();
   const scrollRef = useRef();
   const [rooms, setRooms] = useState([]);
-  const audio=new Audio();
+  const audio = new Audio();
   /*
   const [rooms, setRooms] = useState([
     { room: "general", newMessage: false },
@@ -107,10 +108,8 @@ function Chat() {
         text: data.text,
         createdAt: Date.now(),
       });
-     audio.src=sound;
-     audio.play();
-     
-      
+      audio.src = sound;
+      audio.play();
     });
     socket.current.on("messageArrived", (data) => {
       setArrivedMessage({
@@ -119,8 +118,8 @@ function Chat() {
         text: data.text,
         createdAt: Date.now(),
       });
-         audio.src = sound;
-         audio.play();
+      audio.src = sound;
+      audio.play();
     });
   }, []);
   useEffect(() => {
@@ -179,7 +178,7 @@ function Chat() {
       getCurrentUser();
     }
     getAllUsers();
-    setRoom('general');
+    setRoom("general");
     /*
     const chat = JSON.parse(localStorage.getItem("currentChat"));
     if (chat) {
@@ -253,7 +252,8 @@ function Chat() {
     setNewMessage(iNewMessage);
   };
 
-  const sendMessage = async () => {
+  const sendMessage = async (e) => {
+    e.preventDefault();
     if (room !== "") {
       socket.current.emit("chat-message", {
         from: currentUser._id,
@@ -350,30 +350,32 @@ function Chat() {
   return (
     <div className="chat" data-theme={theme}>
       <div className="chat_header">
-       {/*  <img className="logo" src={logo} alt="Logo" /> */}
+       <img className="logo" src={logo} alt="Logo" /> 
         <div className="chat_headerInfo">
-          <section>
-            <h3>
-              {currentUser.username}
-              {/* {allUsers.length} */}
-            </h3>
-
-            <button onClick={logout}>
-              <img className="logoutBtn" src={logoutBtn} alt="logout" />
-            </button>
-            <div className="darkMode" onClick={switchTheme}>
-              {theme === "light" ? (
-                <img src={darkMode} alt="Logo" />
-              ) : (
-                <img src={lightMode} alt="Logo" />
-              )}
-            </div>
-          </section>
-          <Avatar
+        <Avatar
             className="avatar"
             src={`https://avatars.dicebear.com/api/bottts/${currentUser.avatar}.svg
           `}
           />
+           <h3>
+              {currentUser.username}
+              {/* {allUsers.length} */}
+            </h3>
+          <section>
+           
+
+            <button title="Logout" onClick={logout}>
+              <img className="logoutBtn" src={logoutBtn} alt="logout" />
+            </button>
+            <div className="darkMode" onClick={switchTheme}>
+              {theme === "light" ? (
+                <img alt="darkMode" src={darkMode} title="darkMode" />
+                ) : (
+                  <img alt="lightMode" src={lightMode} title="lightMode" />
+                  )}
+            </div>
+          </section>
+      
         </div>
       </div>
       {/* Handy Version */}
@@ -454,10 +456,6 @@ function Chat() {
               </ul>
             </div>
           </div>
-
-          {/* <button onClick={switchTheme}>
-            Switch to {theme === "light" ? "Dark" : "Light"} Theme
-          </button> */}
         </div>
         <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
         <div className="chat-box">
@@ -471,7 +469,6 @@ function Chat() {
                     currentUser._id === message.from ? "myMessage" : "message"
                   }
                 >
-                  {/* <div className="messageTop"> */}
                   <div className="messages">
                     <img
                       className="messageImg"
@@ -490,15 +487,12 @@ function Chat() {
                             dateFormat(
                               message.createdAt,
                               "dddd,h:MM TT"
-                              // "dddd, mmmm dS, yyyy, h:MM:ss TT"
                             )
                           }
                         </div>
                       </div>
                     </div>
                   </div>
-
-                  {/* <div className="messageBottom"> */}
                 </div>
               );
             })}
@@ -508,15 +502,23 @@ function Chat() {
             <div className="picker">
               {showPicker && <Picker onEmojiClick={onEmojiClick} />}
             </div>
-            <FaRegSmile
+            <img
+              src={emoji}
+              alt="emoji"
               onClick={() => setShowPicker((val) => !val)}
               className="emoji"
             />
-            <input type="text" value={newMessage} onChange={handleNewMessage} />
 
-            <button onClick={sendMessage}>
-              <FiSend />
-            </button>
+            <form>
+              <input
+                type="text"
+                value={newMessage}
+                onChange={handleNewMessage}
+              />
+              <button type="submit" onClick={sendMessage}>
+                <FiSend />
+              </button>
+            </form>
           </div>
         </div>
       </fieldset>
