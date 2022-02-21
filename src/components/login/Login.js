@@ -6,7 +6,6 @@ import showImg from "../../images/open-eye.png";
 import hideImg from "../../images/close-eye.png";
 
 function Login() {
-  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [, setCurrentUser] = useContext(AppContext);
   const navigate = useNavigate();
@@ -75,7 +74,7 @@ function Login() {
         </p>
 
         <form className="resetForm" onSubmit={resetPassword}>
-          <input placeholder="Enter your email" type="email" value={email} />
+          <input placeholder="Enter your email" type="email" /* value={email} */ />
           <button type="submit">Reset</button>
         </form>
 
