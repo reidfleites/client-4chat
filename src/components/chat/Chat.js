@@ -8,7 +8,7 @@ import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
-//import logo from "../../images/Logo.png";
+import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
@@ -349,31 +349,33 @@ function Chat() {
 
   return (
     <div className="chat" data-theme={theme}>
-      <div className="chat_header">
-       {/*  <img className="logo" src={logo} alt="Logo" /> */}
+     <div className="chat_header">
+       <img className="logo" src={logo} alt="Logo" /> 
         <div className="chat_headerInfo">
-          <section>
-            <h3>
-              {currentUser.username}
-              {/* {allUsers.length} */}
-            </h3>
-
-            <button onClick={logout}>
-              <img className="logoutBtn" src={logoutBtn} alt="logout" />
-            </button>
-            <div className="darkMode" onClick={switchTheme}>
-              {theme === "light" ? (
-                <img src={darkMode} alt="Logo" />
-              ) : (
-                <img src={lightMode} alt="Logo" />
-              )}
-            </div>
-          </section>
-          <Avatar
+        <Avatar
             className="avatar"
             src={`https://avatars.dicebear.com/api/bottts/${currentUser.avatar}.svg
           `}
           />
+           <h3>
+              {currentUser.username}
+              {/* {allUsers.length} */}
+            </h3>
+          <section>
+           
+
+            <button title="Logout" onClick={logout}>
+              <img className="logoutBtn" src={logoutBtn} alt="logout" />
+            </button>
+            <div className="darkMode" onClick={switchTheme}>
+              {theme === "light" ? (
+                <img alt="darkMode" src={darkMode} title="darkMode" />
+                ) : (
+                  <img alt="lightMode" src={lightMode} title="lightMode" />
+                  )}
+            </div>
+          </section>
+      
         </div>
       </div>
       {/* Handy Version */}
