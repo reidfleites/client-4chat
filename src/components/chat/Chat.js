@@ -9,7 +9,7 @@ import { FiSend } from "react-icons/fi";
 import emoji from "../../images/smiling-face.png";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
-import logo from "../../images/Logo.png";
+import logo from "../../images/Logo2.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
@@ -22,10 +22,7 @@ import useLocalStorage from "use-local-storage";
 import lightMode from "../../images/solid-black-sun-symbol.png";
 import darkMode from "../../images/night-mode.png";
 
-// import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
-// import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-// import MicIcon from "@material-ui/icons/Mic";
-//import MenuIcon from "@material-ui/icons/Menu";
+
 function Chat() {
 //const [play] = useSound(sound);
   const [play2]=useSound(selectSound);
@@ -360,11 +357,8 @@ function Chat() {
           />
            <h3>
               {currentUser.username}
-              {/* {allUsers.length} */}
             </h3>
           <section>
-           
-
             <button title="Logout" onClick={logout}>
               <img className="logoutBtn" src={logoutBtn} alt="logout" />
             </button>
