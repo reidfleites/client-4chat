@@ -8,7 +8,7 @@ import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
-import logo from "../../images/Logo.png";
+//import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
@@ -16,7 +16,10 @@ import selectSound from "../data/selectsound.wav";
 //import { format } from "timeago.js";
 import { BsFillChatFill } from "react-icons/bs";
 import dateFormat from "dateformat";
-import logoutbtn from "../../images/logout.png";
+import logoutBtn from "../../images/logout.png";
+import useLocalStorage from "use-local-storage";
+import lightMode from "../../images/solid-black-sun-symbol.png";
+import darkMode from "../../images/night-mode.png";
 
 // import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
 // import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
@@ -332,20 +335,39 @@ function Chat() {
     play2();
   };
 
+  //Dark Mode
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   return (
-    <div className="chat">
+    <div className="chat" data-theme={theme}>
       <div className="chat_header">
-        <img src={logo} alt="Logo" />
+       {/*  <img className="logo" src={logo} alt="Logo" /> */}
         <div className="chat_headerInfo">
           <section>
             <h3>
               {currentUser.username}
-              {allUsers.length}
+              {/* {allUsers.length} */}
             </h3>
 
             <button onClick={logout}>
-              <img className="logoutbtn" src={logoutbtn} alt="logout" />
+              <img className="logoutBtn" src={logoutBtn} alt="logout" />
             </button>
+            <div className="darkMode" onClick={switchTheme}>
+              {theme === "light" ? (
+                <img src={darkMode} alt="Logo" />
+              ) : (
+                <img src={lightMode} alt="Logo" />
+              )}
+            </div>
           </section>
           <Avatar
             className="avatar"
@@ -355,9 +377,9 @@ function Chat() {
         </div>
       </div>
       {/* Handy Version */}
-      <div className="menue">
+      <div className="menu">
         <div className="rooms_Dropdown">
-          <button className="dropbtn">Rooms</button>
+          <button className="dropBtn">Rooms</button>
           <div className="dropdown-content">
             <ul>
               {rooms.map((r, index) => {
@@ -375,7 +397,7 @@ function Chat() {
         </div>
 
         <div className="onlineUsers_Dropdown">
-          <button className="dropbtn">
+          <button className="dropBtn">
             Online Users
             <i className="fa fa-caret-down"></i>
           </button>
@@ -432,6 +454,10 @@ function Chat() {
               </ul>
             </div>
           </div>
+
+          {/* <button onClick={switchTheme}>
+            Switch to {theme === "light" ? "Dark" : "Light"} Theme
+          </button> */}
         </div>
         <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
         <div className="chat-box">

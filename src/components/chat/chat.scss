@@ -4,18 +4,18 @@ $c: #fbf3e4;
 $d: #105652;
 
 .chat {
+  background: var(--background);
   font-size: 12px;
   max-height: 100vh;
   .chat_header {
     display: flex;
     justify-content: space-between;
-    max-height: 20vh;
-    margin-bottom: 5px;
-
-    img {
-      
-      width: 80px;
-      height: 80px;
+    height: 15vh;
+    margin: 0 30px;
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin: auto 0;
     }
     .chat_headerInfo {
       display: flex;
@@ -40,7 +40,13 @@ $d: #105652;
           text-transform: uppercase;
           margin: 2px 0 0 0;
           background-color: inherit;
-          .logoutbtn {
+          .logoutBtn {
+            width: 20px;
+            height: 20px;
+          }
+        }
+        .darkMode {
+          img {
             width: 20px;
             height: 20px;
           }
@@ -48,13 +54,13 @@ $d: #105652;
       }
     }
   }
-  .menue {
+  .menu {
     display: none;
   }
   .sidebar {
     display: flex;
     width: 250px;
-    background-color: $b;
+    background-color: var(--sidebar);
     flex-direction: column;
     height: initial;
     overflow-y: scroll;
@@ -283,7 +289,7 @@ $d: #105652;
     .sidebar {
       display: none;
     }
-    .menue {
+    .menu {
       overflow: hidden;
       background-color: $d;
       display: flex;
@@ -293,7 +299,7 @@ $d: #105652;
       .rooms_Dropdown {
         overflow: hidden;
 
-        .dropbtn {
+        .dropBtn {
           font-size: 16px;
           color: white;
           padding: 14px 16px;
@@ -335,7 +341,7 @@ $d: #105652;
       .onlineUsers_Dropdown {
         overflow: hidden;
 
-        .dropbtn {
+        .dropBtn {
           font-size: 16px;
           color: white;
           padding: 14px 16px;
@@ -368,7 +374,7 @@ $d: #105652;
       }
     }
     .container {
-      height: 75vh;
+      max-height: 80vh;
       .chat-box {
         display: flex;
         .messages-box {

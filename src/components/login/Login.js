@@ -6,6 +6,7 @@ import showImg from "../../images/open-eye.png";
 import hideImg from "../../images/close-eye.png";
 
 function Login() {
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [, setCurrentUser] = useContext(AppContext);
   const navigate = useNavigate();
@@ -13,7 +14,6 @@ function Login() {
   const [pwd, setPwd] = useState("");
   const [isRevealPwd, setIsRevealPwd] = useState(false);
 
-  ///////////////////////////////////////////////////////////////////////////////////
   const handleUsername = (e) => {
     const iusername = e.target.value;
     setUsername(iusername);
@@ -37,11 +37,16 @@ function Login() {
     }
   };
 
+  const showResetBox = (e) => {
+    e.preventDefault();
+    alert("test");
+  };
+
+  const resetPassword = () => {};
+
   return (
     <div className="login">
-      {/* <img src={logo} alt="Logo" /> */}
-
-      <form action="">
+      <form className="loginForm" onSubmit={makeConnection}>
         <input
           type="text"
           placeholder=" username"
@@ -64,12 +69,17 @@ function Login() {
         </div>
 
         <p>
-          <a href="/" title="Not yet coded :D">
+          <span title="reset password" onClick={showResetBox}>
             Forgot password?
-          </a>
+          </span>
         </p>
 
-        <button onClick={makeConnection}>Start Chat</button>
+        <form className="resetForm" onSubmit={resetPassword}>
+          <input placeholder="Enter your email" type="email" value={email} />
+          <button type="submit">Reset</button>
+        </form>
+
+        <button type="submit">Start Chat</button>
       </form>
     </div>
   );

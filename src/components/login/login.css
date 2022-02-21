@@ -4,32 +4,41 @@
   margin: auto;
   color: #b91646;
 }
+
 .login img {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 150px;
   margin: 10px auto;
 }
-.login form input {
+
+.login .loginForm input {
   background-color: #dfd8ca;
   width: 100%;
   border: none;
   margin: 5px 0;
   padding: 15px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 14px;
   border-radius: 15px;
 }
-.login form input:hover {
+
+.login .loginForm input:hover {
   background-color: #fbf3e4;
 }
-.login form input:focus {
+
+.login .loginForm input:focus {
   background-color: #fbf3e4;
   outline: none;
 }
-.login form .pwd-container {
+
+.login .loginForm .pwd-container {
   position: relative;
 }
-.login form .pwd-container img {
+
+.login .loginForm .pwd-container img {
   cursor: pointer;
   position: absolute;
   width: 20px;
@@ -37,19 +46,18 @@
   top: 15px;
   opacity: 0.7;
 }
-.login form p {
+
+.login .loginForm p {
   padding: 5px;
   font-size: 12px;
 }
-.login form p a {
-  text-decoration: none;
-  color: inherit;
-}
-.login form p a:hover {
+
+.login .loginForm p span:hover {
   text-decoration: none;
   color: #726761;
 }
-.login form button {
+
+.login .loginForm button {
   background: #b91646;
   width: 100%;
   border: none;
@@ -60,6 +68,8 @@
   border-radius: 15px;
   color: #fbf3e4;
 }
-.login form button:hover {
+
+.login .loginForm button:hover {
   font-weight: bold;
-}/*# sourceMappingURL=login.css.map */
+}
+/*# sourceMappingURL=login.css.map */

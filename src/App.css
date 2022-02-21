@@ -1,4 +1,4 @@
-*{
+* {
   font-family: monospace;
 }
 .app {
@@ -6,4 +6,10 @@
   padding: 10px;
   color: rgb(14, 14, 14);
   background-color: white;
+}
+.logo {
+  display: flex;
+  width: 180px;
+  margin: auto;
+  padding: 0;
 }
