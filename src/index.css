@@ -12,19 +12,25 @@ code {
     monospace;
 }
 
+/* Light */
 :root {
   --background: white;
-  --text-primary: black;
-  --text-secondary: royalblue;
-  --accent: #b91646;
+  --text-primary: rgb(77, 76, 76);
+  --myMessage: #105652;
+  --myMessageDetails:rgb(194, 192, 192);
+  --message:#fbf3e4;
   --sidebar: #dfd8ca;
+  --border: rgb(172, 169, 169);
+  --menue: rgb(211, 202, 202);
 }
 
+/* Dark */
 [data-theme="dark"] {
-  --background: rgb(73, 70, 70);
-  --text-primary: white;
-  --text-secondary: grey;
-  --accent: darkred;
-
-  --sidebar: #105652;
+  --background: rgb(42, 41, 41);
+  --text-primary: rgb(200, 192, 192);
+  --myMessage: #105652;
+  --myMessageDetails:rgb(182, 182, 182);
+  --sidebar: rgb(42, 41, 41);
+  --border: rgb(172, 169, 169);
+  --menue: rgb(54, 52, 52);
 }
