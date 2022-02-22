@@ -155,10 +155,10 @@ function Chat() {
       currentUser.avatar
     );
     socket.current.on("onlineUsers", (onlineUsers) => {
-      const myOnlineUsersList = onlineUsers.filter(
-        (user) => user.id !== currentUser._id
-      );
-      setOnlineUsers([...myOnlineUsersList]);
+      //const myOnlineUsersList = onlineUsers.filter(
+       // (user) => user.id !== currentUser._id
+      //);
+      setOnlineUsers([...onlineUsers]);
     });
     socket.current.emit("join-rooms");
     socket.current.on("rooms-list", (rooms) => {
