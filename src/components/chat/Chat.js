@@ -178,7 +178,7 @@ function Chat() {
       getCurrentUser();
     }
     getAllUsers();
-   // setRoom("general");
+    setRoom("general");
     /*
     const chat = JSON.parse(localStorage.getItem("currentChat"));
     if (chat) {
@@ -461,7 +461,7 @@ function Chat() {
         <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
         <div className="chat-box">
           <div className="messages-box">
-            {currentChat.map((message, index) => {
+            {currentChat.length>0 && currentChat.map((message, index) => {
               return (
                 <div
                   ref={scrollRef}
