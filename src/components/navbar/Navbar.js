@@ -11,12 +11,12 @@ function Navbar() {
       {currentUser.username === "" && (
         <ul>
           <li>
-            <NavLink to="/" className="inActive" activeClassName="active">
+            <NavLink to="/" className="inActive" activeclassname="active">
               Login
             </NavLink>
           </li>
           <li>
-            <NavLink to="signup" className="inActive" activeClassName="active">
+            <NavLink to="signup" className="inActive" activeclassname="active">
               Signup
             </NavLink>
           </li>

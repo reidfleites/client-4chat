@@ -4,15 +4,17 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import showImg from "../../images/open-eye.png";
 import hideImg from "../../images/close-eye.png";
+import ForgetPassword from "../resetpassword/ForgetPassword";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  //const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [, setCurrentUser] = useContext(AppContext);
   const navigate = useNavigate();
   //show and hide Password
   const [pwd, setPwd] = useState("");
   const [isRevealPwd, setIsRevealPwd] = useState(false);
+  const [showResetPasswComponent,setShowResetPasswComponent]=useState(false);
 
   const handleUsername = (e) => {
     const iusername = e.target.value;
@@ -37,12 +39,10 @@ function Login() {
     }
   };
 
-  const showResetBox = (e) => {
+  const showComponent = (e) => {
     e.preventDefault();
-    alert("test");
+   setShowResetPasswComponent(!showResetPasswComponent);
   };
-
-  const resetPassword = () => {};
 
   return (
     <div className="login">
@@ -67,20 +67,14 @@ function Login() {
             onClick={() => setIsRevealPwd((prevState) => !prevState)}
           />
         </div>
-
-        <p>
-          <span title="reset password" onClick={showResetBox}>
-            Forgot password?
-          </span>
-        </p>
-
-        <form className="resetForm" onSubmit={resetPassword}>
-          <input placeholder="Enter your email" type="email" value={email} />
-          <button type="submit">Reset</button>
-        </form>
-
-        <button type="submit">Start Chat</button>
+        {!showResetPasswComponent && <button type="submit">Start Chat</button>}
       </form>
+      <p>
+        <span title="reset password" onClick={showComponent}>
+          Forgot password?
+        </span>
+      </p>
+      {showResetPasswComponent && <ForgetPassword />}
     </div>
   );
 }

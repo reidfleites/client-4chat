@@ -8,6 +8,7 @@ import Verified from "./components/verified/Verified";
 import MyProvider from "./components/context/AppContext";
 import AllUsersProvider from "./components/context/AllUsersContext";
 import logo from "./images/Logo.png";
+import NewPassword from "./components/newpassword/NewPassword";
 
 //test comment
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/password/:id" element={<NewPassword />} />
             <Route path="/verify" element={<Verified />} />
           </Routes>
         </AllUsersProvider>

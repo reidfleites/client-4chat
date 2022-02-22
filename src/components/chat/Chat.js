@@ -123,6 +123,7 @@ function Chat() {
          audio.play();
     });
   }, []);
+  
   useEffect(() => {
     if (arrivedMessage && receiver === arrivedMessage.from) {
       setCurrentChat((prev) => [...prev, arrivedMessage]);
