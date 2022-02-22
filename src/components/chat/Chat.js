@@ -461,7 +461,7 @@ function Chat() {
         <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
         <div className="chat-box">
           <div className="messages-box">
-            {currentChat.length>0 && (currentChat.map((message, index) => {
+            {currentChat.map((message, index) => {
               return (
                 <div
                   ref={scrollRef}
@@ -472,13 +472,16 @@ function Chat() {
                 >
                   {/* <div className="messageTop"> */}
                   <div className="messages">
-                    <img
-                      className="messageImg"
-                      src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
-                        message.from
-                      )}.svg`}
-                      alt="avatar"
-                    />
+                    {message.from && (
+                      <img
+                        className="messageImg"
+                        src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
+                          message.from
+                        )}.svg`}
+                        alt="avatar"
+                      />
+                    )}
+
                     <div className="msg_name">
                       <span>{getUser(message.from)}:</span>
                       <div className="messageText">
@@ -500,7 +503,7 @@ function Chat() {
                   {/* <div className="messageBottom"> */}
                 </div>
               );
-            }))}
+            })}
           </div>
 
           <div className="footer-chat-box">
