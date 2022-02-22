@@ -155,6 +155,7 @@ function Chat() {
       currentUser.avatar
     );
     socket.current.on("onlineUsers", (onlineUsers) => {
+      //etwas
       //const myOnlineUsersList = onlineUsers.filter(
       // (user) => user.id !== currentUser._id
       //);
