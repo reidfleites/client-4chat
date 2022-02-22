@@ -36,9 +36,9 @@ $d: #105652;
       display: flex;
       justify-content: space-between;
       .logo {
-        width: 130px;
+        width: 120px;
         height: 120px;
-        margin: auto 3vw;
+        margin: auto 2vw;
       }
       .chat_headerInfo {
         display: flex;
@@ -63,9 +63,8 @@ $d: #105652;
           margin: auto;
 
           button {
-            flex-direction: row;
+            display: block;
             border: none;
-            text-transform: uppercase;
             background-color: inherit;
             .logoutBtn {
               width: 20px;
@@ -294,26 +293,26 @@ $d: #105652;
         height: 64px;
         border-top: 1px solid gray;
         padding: 0 20px;
-        .picker {
-          position: absolute;
-          margin-bottom: 380px;
-          .emoji-picker-react {
-            width: 450px;
-          }
-        }
-        .emoji {
-          width: 2em;
-          height: 2em;
-          color: gray;
-          &:hover {
-            cursor: pointer;
-            color: black;
-          }
-        }
 
         form {
           display: flex;
           width: 100%;
+          .picker {
+            position: absolute;
+            margin-top: -335px;
+            .emoji-picker-react {
+              width: 450px;
+            }
+          }
+          .emoji {
+            width: 2em;
+            height: 2em;
+            color: gray;
+            &:hover {
+              cursor: pointer;
+              color: black;
+            }
+          }
           input {
             flex: auto;
             border-radius: 30px;

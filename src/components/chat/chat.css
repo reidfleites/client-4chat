@@ -35,9 +35,9 @@
   justify-content: space-between;
 }
 .app .chat .chat_header .logo {
-  width: 130px;
+  width: 120px;
   height: 120px;
-  margin: auto 3vw;
+  margin: auto 2vw;
 }
 .app .chat .chat_header .chat_headerInfo {
   display: flex;
@@ -62,9 +62,8 @@
   margin: auto;
 }
 .app .chat .chat_header .chat_headerInfo section button {
-  flex-direction: row;
+  display: block;
   border: none;
-  text-transform: uppercase;
   background-color: inherit;
 }
 .app .chat .chat_header .chat_headerInfo section button .logoutBtn {
@@ -275,25 +274,25 @@
   border-top: 1px solid gray;
   padding: 0 20px;
 }
-.app .chat .container .footer-chat-box .picker {
-  position: absolute;
-  margin-bottom: 380px;
+.app .chat .container .footer-chat-box form {
+  display: flex;
+  width: 100%;
 }
-.app .chat .container .footer-chat-box .picker .emoji-picker-react {
+.app .chat .container .footer-chat-box form .picker {
+  position: absolute;
+  margin-top: -335px;
+}
+.app .chat .container .footer-chat-box form .picker .emoji-picker-react {
   width: 450px;
 }
-.app .chat .container .footer-chat-box .emoji {
+.app .chat .container .footer-chat-box form .emoji {
   width: 2em;
   height: 2em;
   color: gray;
 }
-.app .chat .container .footer-chat-box .emoji:hover {
+.app .chat .container .footer-chat-box form .emoji:hover {
   cursor: pointer;
   color: black;
-}
-.app .chat .container .footer-chat-box form {
-  display: flex;
-  width: 100%;
 }
 .app .chat .container .footer-chat-box form input {
   flex: auto;

@@ -8,7 +8,7 @@ import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
-//import logo from "../../images/Logo.png";
+import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
@@ -156,7 +156,7 @@ function Chat() {
     );
     socket.current.on("onlineUsers", (onlineUsers) => {
       //const myOnlineUsersList = onlineUsers.filter(
-       // (user) => user.id !== currentUser._id
+      // (user) => user.id !== currentUser._id
       //);
       setOnlineUsers([...onlineUsers]);
     });
@@ -241,8 +241,7 @@ function Chat() {
         );
         if (response.ok) {
           const chatRoom = await response.json();
-          chatRoom.length>0 && (
-          setCurrentChat(chatRoom));
+          chatRoom.length > 0 && setCurrentChat(chatRoom);
         }
       }
     })();
@@ -253,7 +252,8 @@ function Chat() {
     setNewMessage(iNewMessage);
   };
 
-  const sendMessage = async () => {
+  const sendMessage = async (e) => {
+    e.preventDefault();
     if (room !== "") {
       socket.current.emit("chat-message", {
         from: currentUser._id,
@@ -350,14 +350,18 @@ function Chat() {
   return (
     <div className="chat" data-theme={theme}>
       <div className="chat_header">
-        {/*  <img className="logo" src={logo} alt="Logo" /> */}
+        <img className="logo" src={logo} alt="Logo" />
         <div className="chat_headerInfo">
-          <section>
-            <h3>
+        <Avatar
+            className="avatar"
+            src={`https://avatars.dicebear.com/api/bottts/${currentUser.avatar}.svg
+          `}
+          />
+           <h3>
               {currentUser.username}
               {/* {allUsers.length} */}
             </h3>
-
+          <section>
             <button onClick={logout}>
               <img className="logoutBtn" src={logoutBtn} alt="logout" />
             </button>
@@ -369,11 +373,7 @@ function Chat() {
               )}
             </div>
           </section>
-          <Avatar
-            className="avatar"
-            src={`https://avatars.dicebear.com/api/bottts/${currentUser.avatar}.svg
-          `}
-          />
+       
         </div>
       </div>
       {/* Handy Version */}
@@ -454,10 +454,6 @@ function Chat() {
               </ul>
             </div>
           </div>
-
-          {/* <button onClick={switchTheme}>
-            Switch to {theme === "light" ? "Dark" : "Light"} Theme
-          </button> */}
         </div>
         <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
         <div className="chat-box">
@@ -473,15 +469,13 @@ function Chat() {
                 >
                   {/* <div className="messageTop"> */}
                   <div className="messages">
-                    
-                      <img
-                        className="messageImg"
-                        src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
-                          message.from
-                        )}.svg`}
-                        alt="avatar"
-                      />
-                    
+                    <img
+                      className="messageImg"
+                      src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
+                        message.from
+                      )}.svg`}
+                      alt="avatar"
+                    />
 
                     <div className="msg_name">
                       <span>{getUser(message.from)}:</span>
@@ -508,6 +502,7 @@ function Chat() {
           </div>
 
           <div className="footer-chat-box">
+            <form>
             <div className="picker">
               {showPicker && <Picker onEmojiClick={onEmojiClick} />}
             </div>
@@ -520,6 +515,7 @@ function Chat() {
             <button onClick={sendMessage}>
               <FiSend />
             </button>
+            </form>
           </div>
         </div>
       </fieldset>
