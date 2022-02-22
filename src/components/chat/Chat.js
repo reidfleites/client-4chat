@@ -241,7 +241,8 @@ function Chat() {
         );
         if (response.ok) {
           const chatRoom = await response.json();
-          setCurrentChat(chatRoom);
+          chatRoom.length>0 && (
+          setCurrentChat(chatRoom));
         }
       }
     })();
@@ -472,7 +473,7 @@ function Chat() {
                 >
                   {/* <div className="messageTop"> */}
                   <div className="messages">
-                    {message.from && (
+                    
                       <img
                         className="messageImg"
                         src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
@@ -480,7 +481,7 @@ function Chat() {
                         )}.svg`}
                         alt="avatar"
                       />
-                    )}
+                    
 
                     <div className="msg_name">
                       <span>{getUser(message.from)}:</span>
