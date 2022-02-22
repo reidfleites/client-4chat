@@ -471,22 +471,12 @@ function Chat() {
                   {/* <div className="messageTop"> */}
                   <div className="messages">
                     <img
-<<<<<<< HEAD
                         className="messageImg"
                         src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
                           message.from
                         )}.svg`}
                         alt="avatar"
                       />
-=======
-                      className="messageImg"
-                      src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
-                        message.from
-                      )}.svg`}
-                      alt="avatar"
-                    />
-
->>>>>>> cdae5c81cec8a5d91e7d277c1257725d831d93f7
                     <div className="msg_name">
                       <span>{getUser(message.from)}:</span>
                       <div className="messageText">
