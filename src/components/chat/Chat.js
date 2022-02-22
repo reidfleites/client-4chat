@@ -4,12 +4,11 @@ import io from "socket.io-client";
 import { useRef, useEffect, useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
-// import { FaRegSmile } from "react-icons/fa";
+import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
-import emoji from "../../images/smiling-face.png";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
-import logo from "../../images/Logo2.png";
+//import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
@@ -22,10 +21,13 @@ import useLocalStorage from "use-local-storage";
 import lightMode from "../../images/solid-black-sun-symbol.png";
 import darkMode from "../../images/night-mode.png";
 
-
+// import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
+// import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+// import MicIcon from "@material-ui/icons/Mic";
+//import MenuIcon from "@material-ui/icons/Menu";
 function Chat() {
-//const [play] = useSound(sound);
-  const [play2]=useSound(selectSound);
+  //const [play] = useSound(sound);
+  const [play2] = useSound(selectSound);
   const [currentUser, setCurrentUser] = useContext(AppContext);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [currentChat, setCurrentChat] = useState([]);
@@ -42,7 +44,7 @@ function Chat() {
   const socket = useRef();
   const scrollRef = useRef();
   const [rooms, setRooms] = useState([]);
-  const audio=new Audio();
+  const audio = new Audio();
   /*
   const [rooms, setRooms] = useState([
     { room: "general", newMessage: false },
@@ -105,10 +107,8 @@ function Chat() {
         text: data.text,
         createdAt: Date.now(),
       });
-     audio.src=sound;
-     audio.play();
-     
-      
+      audio.src = sound;
+      audio.play();
     });
     socket.current.on("messageArrived", (data) => {
       setArrivedMessage({
@@ -117,11 +117,11 @@ function Chat() {
         text: data.text,
         createdAt: Date.now(),
       });
-         audio.src = sound;
-         audio.play();
+      audio.src = sound;
+      audio.play();
     });
   }, []);
-  
+
   useEffect(() => {
     if (arrivedMessage && receiver === arrivedMessage.from) {
       setCurrentChat((prev) => [...prev, arrivedMessage]);
@@ -178,7 +178,7 @@ function Chat() {
       getCurrentUser();
     }
     getAllUsers();
-    setRoom('general');
+    setRoom("general");
     /*
     const chat = JSON.parse(localStorage.getItem("currentChat"));
     if (chat) {
@@ -348,30 +348,31 @@ function Chat() {
 
   return (
     <div className="chat" data-theme={theme}>
-     <div className="chat_header">
-       <img className="logo" src={logo} alt="Logo" /> 
+      <div className="chat_header">
+        {/*  <img className="logo" src={logo} alt="Logo" /> */}
         <div className="chat_headerInfo">
-        <Avatar
-            className="avatar"
-            src={`https://avatars.dicebear.com/api/bottts/${currentUser.avatar}.svg
-          `}
-          />
-           <h3>
-              {currentUser.username}
-            </h3>
           <section>
-            <button title="Logout" onClick={logout}>
+            <h3>
+              {currentUser.username}
+              {/* {allUsers.length} */}
+            </h3>
+
+            <button onClick={logout}>
               <img className="logoutBtn" src={logoutBtn} alt="logout" />
             </button>
             <div className="darkMode" onClick={switchTheme}>
               {theme === "light" ? (
-                <img alt="darkMode" src={darkMode} title="darkMode" />
-                ) : (
-                  <img alt="lightMode" src={lightMode} title="lightMode" />
-                  )}
+                <img src={darkMode} alt="Logo" />
+              ) : (
+                <img src={lightMode} alt="Logo" />
+              )}
             </div>
           </section>
-      
+          <Avatar
+            className="avatar"
+            src={`https://avatars.dicebear.com/api/bottts/${currentUser.avatar}.svg
+          `}
+          />
         </div>
       </div>
       {/* Handy Version */}
@@ -506,23 +507,15 @@ function Chat() {
             <div className="picker">
               {showPicker && <Picker onEmojiClick={onEmojiClick} />}
             </div>
-            <img
-              src={emoji}
-              alt="emoji"
+            <FaRegSmile
               onClick={() => setShowPicker((val) => !val)}
               className="emoji"
             />
+            <input type="text" value={newMessage} onChange={handleNewMessage} />
 
-            <form>
-              <input
-                type="text"
-                value={newMessage}
-                onChange={handleNewMessage}
-              />
-              <button type="submit" onClick={sendMessage}>
-                <FiSend />
-              </button>
-            </form>
+            <button onClick={sendMessage}>
+              <FiSend />
+            </button>
           </div>
         </div>
       </fieldset>
