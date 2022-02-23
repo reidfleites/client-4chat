@@ -3,13 +3,8 @@
 }
 .app {
   margin: 0;
-  padding: 10px;
-  color: rgb(14, 14, 14);
-  background-color: white;
-}
-.logo {
-  display: flex;
-  width: 180px;
-  margin: auto;
   padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  color: rgb(14, 14, 14);
 }

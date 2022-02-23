@@ -9,8 +9,6 @@ import MyProvider from "./components/context/AppContext";
 import AllUsersProvider from "./components/context/AllUsersContext";
 import NewPassword from "./components/newpassword/NewPassword";
 
-//test comment
-
 function App() {
   return (
     <div className="app">

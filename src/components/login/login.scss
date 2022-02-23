@@ -70,4 +70,13 @@ $d: #105652;
       font-weight: bold;
     }
   }
+  p {
+    span {
+      margin-left: 10px;
+    }
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
 }

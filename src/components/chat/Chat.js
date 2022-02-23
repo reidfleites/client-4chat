@@ -8,7 +8,7 @@ import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
 //import { BiMessageRounded } from "react-icons/bi";
-import logo from "../../images/Logo.png";
+//import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
@@ -20,7 +20,6 @@ import logoutBtn from "../../images/logout.png";
 import useLocalStorage from "use-local-storage";
 import lightMode from "../../images/solid-black-sun-symbol.png";
 import darkMode from "../../images/night-mode.png";
-
 // import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
 // import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 // import MicIcon from "@material-ui/icons/Mic";
@@ -352,36 +351,34 @@ function Chat() {
   return (
     <div className="chat" data-theme={theme}>
       <div className="chat_header">
-        <img className="logo" src={logo} alt="Logo" />
-        <div className="chat_headerInfo">
-        <Avatar
+        {/*<img className="logo" src={logo} alt="Logo"/>*/}
+        <section className="chat_headerInfo">
+          <Avatar
             className="avatar"
             src={`https://avatars.dicebear.com/api/bottts/${currentUser.avatar}.svg
           `}
           />
-           <h3>
-              {currentUser.username}
-              {/* {allUsers.length} */}
-            </h3>
-          <section>
-            <button onClick={logout}>
-              <img className="logoutBtn" src={logoutBtn} alt="logout" />
-            </button>
-            <div className="darkMode" onClick={switchTheme}>
-              {theme === "light" ? (
-                <img src={darkMode} alt="Logo" />
-              ) : (
-                <img src={lightMode} alt="Logo" />
-              )}
-            </div>
-          </section>
-       
-        </div>
+          <h1>Hi {currentUser.username}</h1>
+        </section>
+
+        <section className="chat_headerBtn">
+          <button onClick={logout}>
+            <img className="logoutBtn" src={logoutBtn} alt="logout" />
+          </button>
+          <div className="darkMode" onClick={switchTheme}>
+            {theme === "light" ? (
+              <img src={darkMode} alt="Logo" />
+            ) : (
+              <img src={lightMode} alt="Logo" />
+            )}
+          </div>
+        </section>
       </div>
-      {/* Handy Version */}
-      <div className="menu">
+
+      {/* Mobil Version */}
+    <div className="menu">
         <div className="rooms_Dropdown">
-          <button className="dropBtn">Rooms</button>
+          <span className="dropBtn">Public Rooms</span>
           <div className="dropdown-content">
             <ul>
               {rooms.map((r, index) => {
@@ -399,11 +396,46 @@ function Chat() {
         </div>
 
         <div className="onlineUsers_Dropdown">
-          <button className="dropBtn">
+          <span className="dropBtn">
             Online Users
             <i className="fa fa-caret-down"></i>
-          </button>
+          </span>
           <div className="dropdown-content">
+            <ul>
+              {onlineUsers.map((user, index) => {
+                return (
+                  <li onClick={() => setBoxChat(user.id)} key={index}>
+                    {user.username}
+                    {user.countMessage > 0 && (
+                      <span className="message-notification">
+                        {user.countMessage}
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        {/* Desktop version */}
+        <div className="sidebar">
+          {/* <h2>Rooms</h2> */}
+          <ul className="roomsList">
+            {rooms.map((r, index) => {
+              return (
+                <li onClick={() => showRoomChat(r.room)} key={index}>
+                  {r.room}
+                  {r.newMessage && (
+                    <BsFillChatFill className="icon-notification" />
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <ul className="onlineList">
             {onlineUsers.map((user, index) => {
               return (
                 <li onClick={() => setBoxChat(user.id)} key={index}>
@@ -416,50 +448,12 @@ function Chat() {
                 </li>
               );
             })}
-          </div>
+          </ul>
         </div>
-      </div>
-      <fieldset className="container">
-        {/* Desktop version */}
-        <div className="sidebar">
-          <div className="rooms">
-            <p>Rooms</p>
-            <ul>
-              {rooms.map((r, index) => {
-                return (
-                  <li onClick={() => showRoomChat(r.room)} key={index}>
-                    {r.room}
-                    {r.newMessage && (
-                      <BsFillChatFill className="icon-notification" />
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div>
-            <div className="user-online-list">
-              <p>Online Users</p>
-              <ul>
-                {onlineUsers.map((user, index) => {
-                  return (
-                    <li onClick={() => setBoxChat(user.id)} key={index}>
-                      {user.username}
-                      {user.countMessage > 0 && (
-                        <span className="message-notification">
-                          {user.countMessage}
-                        </span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
-        </div>
-        <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
         <div className="chat-box">
-          <div className="messages-box">
+          <fieldset className="messages-box">
+            <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
+
             {currentChat.map((message, index) => {
               return (
                 <div
@@ -472,14 +466,14 @@ function Chat() {
                   {/* <div className="messageTop"> */}
                   <div className="messages">
                     <img
-                        className="messageImg"
-                        src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
-                          message.from
-                        )}.svg`}
-                        alt="avatar"
-                      />
+                      className="messageImg"
+                      src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
+                        message.from
+                      )}.svg`}
+                      alt="avatar"
+                    />
                     <div className="msg_name">
-                      <span>{getUser(message.from)}:</span>
+                      <span>{getUser(message.from)}</span>
                       <div className="messageText">
                         {message.text}
                         <div className="messageDetails">
@@ -500,25 +494,29 @@ function Chat() {
                 </div>
               );
             })}
-          </div>
+          </fieldset>
 
           <div className="footer-chat-box">
             <form>
-            <div className="picker">
-              {showPicker && <Picker onEmojiClick={onEmojiClick} />}
-            </div>
-            <FaRegSmile
-              onClick={() => setShowPicker((val) => !val)}
-              className="emoji"
-            />
-            <input type="text" value={newMessage} onChange={handleNewMessage} />
-            <button onClick={sendMessage}>
-              <FiSend />
-            </button>
+              <div className="picker">
+                {showPicker && <Picker onEmojiClick={onEmojiClick} />}
+              </div>
+              <FaRegSmile
+                className="emoji"
+                onClick={() => setShowPicker((val) => !val)}
+              />
+              <input
+                type="text"
+                value={newMessage}
+                onChange={handleNewMessage}
+              />
+              <button onClick={sendMessage}>
+                <FiSend />
+              </button>
             </form>
           </div>
         </div>
-      </fieldset>
+      </div>
     </div>
   );
 }
