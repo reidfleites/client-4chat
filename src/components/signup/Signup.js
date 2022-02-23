@@ -6,6 +6,7 @@ import hideImg from "../../images/close-eye.png";
 
 function Signup() {
   const [message, setMessage] = useState("");
+  const [showButton,setShowButton]=useState(true);
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -48,8 +49,11 @@ function Signup() {
           }),
         }
       );
+      setShowButton(false);
+      setMessage("Creating user...")
       if (response.ok) {
         setMessage(`Hi ${values.username}, please confirm your email`);
+        setShowButton(true);
         clearForm();
       }
     }
@@ -112,11 +116,9 @@ function Signup() {
             onClick={() => setIsReveal((prevState) => !prevState)}
           />
         </div>
-
-        <button type="submit">Create My Account</button>
+        {showButton && <button type="submit">Create My Account</button>}
       </form>
       <h3>{message}</h3>
-
     </div>
   );
 }
