@@ -424,7 +424,7 @@ function Chat() {
         <div className="sidebar">
           {/* <h2>Rooms</h2> */}
           <ul className="roomsList">
-            {rooms.map((r, index) => {
+            {currentUser.username!=="" && rooms.map((r, index) => {
               return (
                 <li onClick={() => showRoomChat(r.room)} key={index}>
                   {r.room}
@@ -436,7 +436,7 @@ function Chat() {
             })}
           </ul>
           <ul className="onlineList">
-            {onlineUsers.map((user, index) => {
+            {currentUser.username!=="" && onlineUsers.map((user, index) => {
               return (
                 <li onClick={() => setBoxChat(user.id)} key={index}>
                   {user.username}
@@ -495,7 +495,7 @@ function Chat() {
               );
             })}
           </fieldset>
-
+            {currentUser.username!=="" && (
           <div className="footer-chat-box">
             <form>
               <div className="picker">
@@ -514,9 +514,10 @@ function Chat() {
                 <FiSend />
               </button>
             </form>
-          </div>
+          </div>)}
         </div>
       </div>
+
     </div>
   );
 }

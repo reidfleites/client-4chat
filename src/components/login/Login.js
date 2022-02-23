@@ -1,5 +1,5 @@
-import { AppContext } from "../context/AppContext";
-import { useState, useContext } from "react";
+//import { AppContext } from "../context/AppContext";
+import { useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import showImg from "../../images/open-eye.png";
@@ -9,7 +9,7 @@ import ForgetPassword from "../resetpassword/ForgetPassword";
 function Login() {
   //const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [, setCurrentUser] = useContext(AppContext);
+  //const [setCurrentUser] = useContext(AppContext);
   const navigate = useNavigate();
   //show and hide Password
   const [pwd, setPwd] = useState("");
@@ -34,7 +34,7 @@ function Login() {
     if (response.ok) {
       const user = await response.json();
       console.log(user);
-      setCurrentUser({ ...user });
+     // setCurrentUser({ ...user });
       navigate("/chat");
     }
   };
