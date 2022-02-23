@@ -15,7 +15,7 @@ function Login() {
   const [pwd, setPwd] = useState("");
   const [isRevealPwd, setIsRevealPwd] = useState(false);
   const [showResetPasswComponent,setShowResetPasswComponent]=useState(false);
-
+  const [connectingMessage,setConnectingMessage]=useState("");
   const handleUsername = (e) => {
     const iusername = e.target.value;
     setUsername(iusername);
@@ -31,9 +31,11 @@ function Login() {
         user: { username: username, password: pwd },
       }),
     });
+    setConnectingMessage("Connecting...")
     if (response.ok) {
-      const user = await response.json();
-      console.log(user);
+      setConnectingMessage("");
+      //const user = await response.json();
+      //console.log(user);
      // setCurrentUser({ ...user });
       navigate("/chat");
     }
@@ -75,6 +77,7 @@ function Login() {
         </span>
       </p>
       {showResetPasswComponent && <ForgetPassword />}
+      {connectingMessage}
     </div>
   );
 }
