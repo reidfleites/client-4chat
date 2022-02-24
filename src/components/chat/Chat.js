@@ -456,41 +456,42 @@ function Chat() {
 
             {currentChat.map((message, index) => {
               return (
-                <div
-                  ref={scrollRef}
-                  key={index}
-                  className={
-                    currentUser._id === message.from ? "myMessage" : "message"
-                  }
-                >
-                  {/* <div className="messageTop"> */}
-                  <div className="messages">
-                    <img
-                      className="messageImg"
-                      src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
-                        message.from
-                      )}.svg`}
-                      alt="avatar"
-                    />
-                    <div className="msg_name">
-                      <span>{getUser(message.from)}</span>
-                      <div className="messageText">
-                        {message.text}
-                        <div className="messageDetails">
-                          {
-                            //                       //format(message.createdAt)
-                            dateFormat(
-                              message.createdAt,
-                              "dddd,h:MM TT"
-                              // "dddd, mmmm dS, yyyy, h:MM:ss TT"
-                            )
-                          }
+                <div ref={scrollRef}>
+                  <div
+                    key={index}
+                    className={
+                      currentUser._id === message.from ? "myMessage" : "message"
+                    }
+                  >
+                    {/* <div className="messageTop"> */}
+                    <div className="messages">
+                      <img
+                        className="messageImg"
+                        src={`https://avatars.dicebear.com/api/bottts/${getAvatar(
+                          message.from
+                        )}.svg`}
+                        alt="avatar"
+                      />
+                      <div className="msg_name">
+                        <span>{getUser(message.from)}</span>
+                        <div className="messageText">
+                          {message.text}
+                          <div className="messageDetails">
+                            {
+                              //                       //format(message.createdAt)
+                              dateFormat(
+                                message.createdAt,
+                                "dddd,h:MM TT"
+                                // "dddd, mmmm dS, yyyy, h:MM:ss TT"
+                              )
+                            }
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* <div className="messageBottom"> */}
+                    {/* <div className="messageBottom"> */}
+                  </div>
                 </div>
               );
             })}
