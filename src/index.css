@@ -22,14 +22,14 @@ code {
   --border: #fbf3e4;
   --menue: #dfd8ca;
   --myMessageText: #555;
-  --bg: url("./bg.png");
+  --bg: url("./images/bg.png");
   --scroll: rgba(102, 105, 102, 0.301);
   ;
 }
 
 /* Dark */
 [data-theme="dark"] {
-  --bg: url("./bg2.png");
+  --bg: url("./images/bg2.png");
   --background: rgb(42, 41, 41);
   --text-primary: rgb(200, 192, 192);
   --myMessage: #12704c;

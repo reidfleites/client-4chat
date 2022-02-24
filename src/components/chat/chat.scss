@@ -29,6 +29,8 @@ $d: #12704c;
   height: 100vh;
 
   .chat_header {
+    padding-bottom: 0;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,19 +59,20 @@ $d: #12704c;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding-bottom: 0;
       margin: 10px 10px 0 20px;
       button {
         display: block;
         border: none;
         background-color: inherit;
-
+        padding: 0;
         .logoutBtn {
           width: 20px;
           height: 20px;
           border: 1px solid var(--border);
           padding: 5px;
           border-radius: 10px;
-          margin: 5px;
+          margin: 0;
         }
         &:hover {
           cursor: pointer;
@@ -83,7 +86,7 @@ $d: #12704c;
           border: 1px solid var(--border);
           padding: 5px;
           border-radius: 10px;
-          margin: 5px;
+          margin: 5px 10px;
         }
         &:hover {
           cursor: pointer;
@@ -394,7 +397,7 @@ $d: #12704c;
             }
             li {
               list-style: none;
-              color:var(--text-primary);
+              color: var(--text-primary);
               &:hover {
                 font-weight: bolder;
               }
@@ -441,7 +444,7 @@ $d: #12704c;
             text-align: left;
             li {
               list-style: none;
-              color:var(--text-primary);
+              color: var(--text-primary);
             }
             &:hover {
               font-weight: bolder;
