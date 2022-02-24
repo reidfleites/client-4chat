@@ -39,6 +39,7 @@ function NewPassword() {
       <form>
         <div>
           <input
+            className="setPass"
             type="password"
             placeholder="new password"
             value={password}
@@ -47,13 +48,14 @@ function NewPassword() {
         </div>
         <div>
           <input
+            className="setPass"
             placeholder="confirm password"
             type="password"
             value={password2}
             onChange={setHandlePassword2}
           />
         </div>
-        <button onClick={setNewPassword}>Set New Password</button>
+        <button className="sendButton" onClick={setNewPassword}>Set New Password</button>
       </form>
     </div>
   );

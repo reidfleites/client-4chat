@@ -27,8 +27,16 @@ if(response.ok){
   }
     return (
       <div className="resetPassword">
-            <input placeholder="Enter your email" type="email" value={email} onChange={setHandleEmail}/>
-            <button onClick={sendEmail}>Send Email</button>
+        <input
+          className="enterEmail"
+          placeholder="Enter your email"
+          type="email"
+          value={email}
+          onChange={setHandleEmail}
+        />
+        <button className="sendBtn" onClick={sendEmail}>
+          Send Email
+        </button>
       </div>
     );
 }export default ForgetPassword;
