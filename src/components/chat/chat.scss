@@ -14,13 +14,13 @@ $d: #12704c;
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--menu);
+  background: rgba(102, 105, 102, 0.301);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border);
+  background: rgba(148, 149, 148, 0.705);
 }
 
 .chat {
@@ -347,23 +347,25 @@ $d: #12704c;
     }
     .menu {
       overflow: hidden;
+      background-color: var(--sidebar);
       display: flex;
-      width: 300px;
+      width: 90vw;
       text-align: center;
-      right: 50px;
-      justify-content: center;
-      align-items: center;
       border-radius: 15px;
-      //border: 1px solid $c;
-      margin: 0 40px;
+      border: 1px solid var(--border);
+      margin: auto;
+      padding: 1vh 0;
 
       //rooms
       .rooms_Dropdown {
         overflow: hidden;
         width: 50%;
+        z-index: 2;
+        cursor: pointer;
+
         .dropBtn {
           font-size: 16px;
-          color: #666;
+          color: var(--text-primary);
           //padding: 0;
         }
         &:hover {
@@ -375,14 +377,16 @@ $d: #12704c;
         .dropdown-content {
           display: none;
           position: absolute;
-          background-color: $b;
+          background-color: var(--sidebar);
           border-bottom-right-radius: 15px;
           border-bottom-left-radius: 15px;
+          border: 1px solid var(--border);
+          border-top: none;
           line-height: 30px;
-          width: 40%;
+          width: 44.4%;
           z-index: 1;
           ul {
-            text-align: left;
+            text-align: center;
             padding: 0 10px;
             .icon-notification {
               color: #b91646;
@@ -390,6 +394,7 @@ $d: #12704c;
             }
             li {
               list-style: none;
+              color:var(--text-primary);
               &:hover {
                 font-weight: bolder;
               }
@@ -402,9 +407,11 @@ $d: #12704c;
       .onlineUsers_Dropdown {
         overflow: hidden;
         width: 50%;
+        z-index: 2;
+        cursor: pointer;
         .dropBtn {
           font-size: 16px;
-          color: #666;
+          color: var(--text-primary);
           //padding: 0;
         }
         &:hover {
@@ -423,11 +430,18 @@ $d: #12704c;
           width: 40%;
           max-height: 40%;
           overflow-y: scroll;
+          width: 44.4%;
+          border: 1px solid var(--border);
+          background-color: var(--sidebar);
+          padding-left: 0;
+          margin-left: 0;
+          border-top: none;
+
           ul {
             text-align: left;
-            padding: 0 10px;
             li {
               list-style: none;
+              color:var(--text-primary);
             }
             &:hover {
               font-weight: bolder;

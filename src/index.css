@@ -15,15 +15,16 @@ code {
 :root {
   --background: white;
   --text-primary: rgb(77, 76, 76);
-  --myMessage: #DCF8C8;
-  --myMessageDetails:#666;
-  --message:#fbf3e4;
+  --myMessage: #dcf8c8;
+  --myMessageDetails: #666;
+  --message: #fbf3e4;
   --sidebar: #fbf3e4;
   --border: #fbf3e4;
   --menue: #dfd8ca;
-  --myMessageText:#555;
+  --myMessageText: #555;
   --bg: url("./bg.png");
-
+  --scroll: rgba(102, 105, 102, 0.301);
+  ;
 }
 
 /* Dark */
@@ -33,9 +34,10 @@ code {
   --text-primary: rgb(200, 192, 192);
   --myMessage: #12704c;
   --myMessageText: #eee;
-  --myMessageDetails:rgb(182, 182, 182);
+  --myMessageDetails: rgb(182, 182, 182);
   --sidebar: rgb(42, 41, 41);
   --border: rgb(172, 169, 169);
   --menue: rgb(54, 52, 52);
-}
+  --scroll:rgba(102, 105, 102, 0.301) ;
 
+}
