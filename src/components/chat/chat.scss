@@ -136,7 +136,7 @@ $d: #12704c;
 
       .icon-notification {
         color: #b91646;
-        padding-left: 5px;
+        padding-left: 10px;
       }
     }
     .onlineList {
@@ -160,10 +160,12 @@ $d: #12704c;
         }
 
         .message-notification {
-          background-color: red;
-          padding: 4px;
-          border-radius: 20%;
-          margin-left: 5px;
+          font-size: 10px;
+          color: $a;
+          border: 1px solid $a;
+          border-radius: 50%;
+          margin: 0 0 10px 10px;
+          padding: 0 3px;
           text-align: center;
         }
       }
@@ -393,7 +395,7 @@ $d: #12704c;
             padding: 0 10px;
             .icon-notification {
               color: #b91646;
-              padding-left: 5px;
+              padding-left: 10px;
             }
             li {
               list-style: none;
@@ -445,6 +447,15 @@ $d: #12704c;
             li {
               list-style: none;
               color: var(--text-primary);
+              .message-notification {
+                font-size: 10px;
+                color: $a;
+                border: 1px solid $a;
+                border-radius: 50%;
+                margin: 0 0 10px 10px;
+                padding: 0 3px;
+                text-align: center;
+              }
             }
             &:hover {
               font-weight: bolder;
