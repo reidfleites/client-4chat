@@ -7,25 +7,18 @@ import { useNavigate } from "react-router-dom";
 import { FaRegSmile } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Picker from "emoji-picker-react";
-//import { BiMessageRounded } from "react-icons/bi";
-//import logo from "../../images/Logo.png";
 import { Avatar } from "@material-ui/core";
 import useSound from "use-sound";
 import sound from "../data/notification.mp3";
 import selectSound from "../data/selectsound.wav";
-//import { format } from "timeago.js";
 import { BsFillChatFill } from "react-icons/bs";
 import dateFormat from "dateformat";
 import logoutBtn from "../../images/logout.png";
 import useLocalStorage from "use-local-storage";
 import lightMode from "../../images/solid-black-sun-symbol.png";
 import darkMode from "../../images/night-mode.png";
-// import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
-// import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-// import MicIcon from "@material-ui/icons/Mic";
-//import MenuIcon from "@material-ui/icons/Menu";
+
 function Chat() {
-  //const [play] = useSound(sound);
   const [play2] = useSound(selectSound);
   const [currentUser, setCurrentUser] = useContext(AppContext);
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -44,15 +37,6 @@ function Chat() {
   const scrollRef = useRef();
   const [rooms, setRooms] = useState([]);
   const audio = new Audio();
-  /*
-  const [rooms, setRooms] = useState([
-    { room: "general", newMessage: false },
-    { room: "musik", newMessage: false },
-    { room: "sport", newMessage: false },
-  ]);*/
-  //Random Avatar
-  //const [seed, setSeed] = useState("");
-  //get current User
 
   const getCurrentUser = async () => {
     const response = await fetch(
@@ -80,14 +64,14 @@ function Chat() {
       setAllUsers([...users]);
     }
   };
-  //return User from  allUser
+  
   const getUser = (id) => {
     if (allUsers.length > 0) {
       const user = allUsers.find((user) => user._id === id);
       return user.username;
     }
   };
-  //retun avatar number
+  
   const getAvatar = (id) => {
     if (allUsers.length > 0) {
       const user = allUsers.find((user) => user._id === id);
@@ -119,6 +103,8 @@ function Chat() {
       audio.src = sound;
       audio.play();
     });
+     getCurrentUser();
+      getAllUsers();
   }, []);
 
   useEffect(() => {
@@ -154,10 +140,7 @@ function Chat() {
       currentUser.avatar
     );
     socket.current.on("onlineUsers", (onlineUsers) => {
-      //etwas
-      //const myOnlineUsersList = onlineUsers.filter(
-      // (user) => user.id !== currentUser._id
-      //);
+
       setOnlineUsers([...onlineUsers]);
     });
     socket.current.emit("join-rooms");
@@ -172,20 +155,6 @@ function Chat() {
       localStorage.setItem("currentChat", JSON.stringify(currentChat));
     }
   }, [currentChat]);
-
-  useEffect(() => {
-    if (currentUser.username === "") {
-      getCurrentUser();
-    }
-    getAllUsers();
-    
-    /*
-    const chat = JSON.parse(localStorage.getItem("currentChat"));
-    if (chat) {
-      setCurrentChat([...chat]);
-    }
-    */
-  }, []);
 
   useEffect(() => {
     if (notification) {
