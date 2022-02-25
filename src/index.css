@@ -19,12 +19,11 @@ code {
   --myMessageDetails: #666;
   --message: #fbf3e4;
   --sidebar: #fbf3e4;
-  --border: #fbf3e4;
+  --border: #dfd8ca;
   --menue: #dfd8ca;
   --myMessageText: #555;
   --bg: url("./images/bg.png");
   --scroll: rgba(102, 105, 102, 0.301);
-  ;
 }
 
 /* Dark */

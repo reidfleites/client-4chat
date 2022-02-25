@@ -420,7 +420,7 @@ function Chat() {
         </div>
         <div className="chat-box">
           <fieldset className="messages-box">
-            <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
+            <legend>{receiver !== "" ? getUser(receiver) : room !== "" ? room : "Select Room/User to chat"}</legend>
 
             {currentChat.map((message, index) => {
               return (
