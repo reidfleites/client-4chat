@@ -67,13 +67,11 @@ function Chat() {
 
   const getUser = (id) => {
     let user = onlineUsers.find((user) => user.id === id);
-    if (!user) {
+    if (user===undefined) {
       user = allUsers.find((user) => user._id === id);
+  
     }
-    else{
-      user = allUsers.find((user) => user._id === id);
-      
-    }
+    
     return user.username;
   };
   //retun avatar number
@@ -81,9 +79,6 @@ function Chat() {
     let user = onlineUsers.find((user) => user.id === id);
     if (user === undefined) {
       user = allUsers.find((user) => user._id === id);
-    }
-    else{
-      user = allUsers.find((user) => user._id === id);  
     }
     return user.avatar;
   };
