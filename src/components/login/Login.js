@@ -14,8 +14,8 @@ function Login() {
   //show and hide Password
   const [pwd, setPwd] = useState("");
   const [isRevealPwd, setIsRevealPwd] = useState(false);
-  const [showResetPasswComponent,setShowResetPasswComponent]=useState(false);
-  const [connectingMessage,setConnectingMessage]=useState("");
+  const [showResetPasswComponent, setShowResetPasswComponent] = useState(false);
+  const [connectingMessage, setConnectingMessage] = useState("");
   const handleUsername = (e) => {
     const iusername = e.target.value;
     setUsername(iusername);
@@ -31,19 +31,20 @@ function Login() {
         user: { username: username, password: pwd },
       }),
     });
-    setConnectingMessage("Connecting...")
+    setConnectingMessage("connecting...");
     if (response.ok) {
       setConnectingMessage("");
-      //const user = await response.json();
-      //console.log(user);
-     // setCurrentUser({ ...user });
       navigate("/chat");
+    } else {
+      const data = await response.json();
+      const message = data.message;
+      setConnectingMessage(message);
     }
   };
 
   const showComponent = (e) => {
     e.preventDefault();
-   setShowResetPasswComponent(!showResetPasswComponent);
+    setShowResetPasswComponent(!showResetPasswComponent);
   };
 
   return (

@@ -11,13 +11,13 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--menu);
+  background: rgba(102, 105, 102, 0.301);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border);
+  background: rgba(148, 149, 148, 0.705);
 }
 
 .chat {
@@ -27,6 +27,7 @@
 }
 
 .chat .chat_header {
+  padding-bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -76,6 +77,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-bottom: 0;
   margin: 10px 10px 0 20px;
 }
 
@@ -83,6 +85,7 @@
   display: block;
   border: none;
   background-color: inherit;
+  padding: 0;
 }
 
 .chat .chat_header .chat_headerBtn button .logoutBtn {
@@ -91,7 +94,7 @@
   border: 1px solid var(--border);
   padding: 5px;
   border-radius: 10px;
-  margin: 5px;
+  margin: 0;
 }
 
 .chat .chat_header .chat_headerBtn button:hover {
@@ -105,7 +108,7 @@
   border: 1px solid var(--border);
   padding: 5px;
   border-radius: 10px;
-  margin: 5px;
+  margin: 5px 10px;
 }
 
 .chat .chat_header .chat_headerBtn .darkMode:hover {
@@ -163,7 +166,7 @@
 
 .chat .sidebar .roomsList .icon-notification {
   color: #b91646;
-  padding-left: 5px;
+  padding-left: 10px;
 }
 
 .chat .sidebar .onlineList {
@@ -191,10 +194,12 @@
 }
 
 .chat .sidebar .onlineList li .message-notification {
-  background-color: red;
-  padding: 4px;
-  border-radius: 20%;
-  margin-left: 5px;
+  font-size: 10px;
+  color: #fbf3e4;
+  background-color: #b91646;
+  padding: 2px 5px;
+  border-radius: 50%;
+  margin: 0 0 10px 10px;
   text-align: center;
 }
 
@@ -418,7 +423,7 @@
   padding: 10px;
   margin: 0 10px;
   font-size: 15px;
-  border: 1px solid gray;
+  border: 1px solid var(--border);
   background-color: #fdfdfd;
 }
 
@@ -440,28 +445,26 @@
   }
   .chat .menu {
     overflow: hidden;
+    background-color: var(--sidebar);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 300px;
+    width: 90vw;
     text-align: center;
-    right: 50px;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     border-radius: 15px;
-    margin: 0 40px;
+    border: 1px solid var(--border);
+    margin: auto;
+    padding: 1vh 0;
   }
   .chat .menu .rooms_Dropdown {
     overflow: hidden;
     width: 50%;
+    z-index: 2;
+    cursor: pointer;
   }
   .chat .menu .rooms_Dropdown .dropBtn {
     font-size: 16px;
-    color: #666;
+    color: var(--text-primary);
   }
   .chat .menu .rooms_Dropdown:hover .dropdown-content {
     display: block;
@@ -469,23 +472,26 @@
   .chat .menu .rooms_Dropdown .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #dfd8ca;
+    background-color: var(--sidebar);
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
+    border: 1px solid var(--border);
+    border-top: none;
     line-height: 30px;
-    width: 40%;
+    width: 44.4%;
     z-index: 1;
   }
   .chat .menu .rooms_Dropdown .dropdown-content ul {
-    text-align: left;
+    text-align: center;
     padding: 0 10px;
   }
   .chat .menu .rooms_Dropdown .dropdown-content ul .icon-notification {
     color: #b91646;
-    padding-left: 5px;
+    padding-left: 10px;
   }
   .chat .menu .rooms_Dropdown .dropdown-content ul li {
     list-style: none;
+    color: var(--text-primary);
   }
   .chat .menu .rooms_Dropdown .dropdown-content ul li:hover {
     font-weight: bolder;
@@ -493,10 +499,12 @@
   .chat .menu .onlineUsers_Dropdown {
     overflow: hidden;
     width: 50%;
+    z-index: 2;
+    cursor: pointer;
   }
   .chat .menu .onlineUsers_Dropdown .dropBtn {
     font-size: 16px;
-    color: #666;
+    color: var(--text-primary);
   }
   .chat .menu .onlineUsers_Dropdown:hover .dropdown-content {
     display: block;
@@ -511,13 +519,28 @@
     width: 40%;
     max-height: 40%;
     overflow-y: scroll;
+    width: 44.4%;
+    border: 1px solid var(--border);
+    background-color: var(--sidebar);
+    padding-left: 0;
+    margin-left: 0;
+    border-top: none;
   }
   .chat .menu .onlineUsers_Dropdown .dropdown-content ul {
     text-align: left;
-    padding: 0 10px;
   }
   .chat .menu .onlineUsers_Dropdown .dropdown-content ul li {
     list-style: none;
+    color: var(--text-primary);
+  }
+  .chat .menu .onlineUsers_Dropdown .dropdown-content ul li .message-notification {
+    font-size: 10px;
+    color: #fbf3e4;
+    background-color: #b91646;
+    padding: 2px 5px;
+    border-radius: 50%;
+    margin: 0 0 10px 10px;
+    text-align: center;
   }
   .chat .menu .onlineUsers_Dropdown .dropdown-content ul:hover {
     font-weight: bolder;

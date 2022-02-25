@@ -79,6 +79,11 @@ function Chat() {
     }
   };
 
+  const soundnotification =() =>{
+    audio.src = sound;
+    audio.play();
+  };
+
   useEffect(() => {
     socket.current = io(`${process.env.REACT_APP_BACKEND_URL}`, {
       withCredentials: true,
@@ -90,8 +95,6 @@ function Chat() {
         text: data.text,
         createdAt: Date.now(),
       });
-      audio.src = sound;
-      audio.play();
     });
     socket.current.on("messageArrived", (data) => {
       setArrivedMessage({
@@ -100,8 +103,6 @@ function Chat() {
         text: data.text,
         createdAt: Date.now(),
       });
-      audio.src = sound;
-      audio.play();
     });
      getCurrentUser();
       getAllUsers();
@@ -113,6 +114,7 @@ function Chat() {
     }
     if (arrivedMessage && receiver !== arrivedMessage.from) {
       setNotification(true);
+      soundnotification();
     }
   }, [arrivedMessage]);
 
@@ -120,7 +122,7 @@ function Chat() {
     roomMessage &&
       roomMessage.to === room &&
       setCurrentChat((prev) => [...prev, roomMessage]);
-    roomMessage && roomMessage.to !== room && setRoomNotification(true);
+    roomMessage && roomMessage.to !== room && setRoomNotification(true) && soundnotification()    ;
   }, [roomMessage]);
 
   useEffect(() => {
@@ -414,7 +416,7 @@ function Chat() {
         </div>
         <div className="chat-box">
           <fieldset className="messages-box">
-            <legend>{receiver !== "" ? getUser(receiver) : room}</legend>
+            <legend>{receiver !== "" ? getUser(receiver) : room !== "" ? room : "Select Room/User to chat"}</legend>
 
             {currentChat.map((message, index) => {
               return (
