@@ -6,6 +6,7 @@ function NewPassword() {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const id = useParams();
+  const [userMessage, setUserMessage] = useState("");
   const setHandlePassword = (e) => {
     const ipasswd = e.target.value;
     setPassword(ipasswd);
@@ -14,26 +15,33 @@ function NewPassword() {
     const ipasswd2 = e.target.value;
     setPassword2(ipasswd2);
   };
+
   const setNewPassword = async (e) => {
     e.preventDefault();
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/setPassword`,
-      {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user: { id: id, password: password },
-        }),
+    if (password !== password2) {
+      setUserMessage("Passwords do not match");
+    }
+    if (password === password2) {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/setPassword`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user: { id: id, password: password },
+          }),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setUserMessage(data.message);
+        setPassword("");
+        setPassword2("");
       }
-    );
-    if (response.ok) {
-      const message = await response.json();
-      console.log(message);
-      setPassword("");
-      setPassword2("");
     }
   };
+
   return (
     <div className="newPassword">
       <form>
@@ -55,8 +63,11 @@ function NewPassword() {
             onChange={setHandlePassword2}
           />
         </div>
-        <button className="sendButton" onClick={setNewPassword}>Set New Password</button>
+        <button className="sendButton" onClick={setNewPassword}>
+          Set New Password
+        </button>
       </form>
+      {userMessage}
     </div>
   );
 }

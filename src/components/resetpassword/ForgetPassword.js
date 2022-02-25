@@ -1,42 +1,43 @@
 import { useState } from "react";
-import "./forgetpassword.css"
+import "./forgetpassword.css";
 
-function ForgetPassword (){
-  const [email,setEmail]=useState("");
-
-  const setHandleEmail=(e)=>{
+function ForgetPassword() {
+  const [email, setEmail] = useState("");
+  const setHandleEmail = (e) => {
     const iemail = e.target.value;
     setEmail(iemail);
-  }
-  const sendEmail=async(e)=>{
-      e.preventDefault();
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/forgetPassword`,
-        {
-          method: "POST",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            user: { email: email },
-          }),
-        }
-      ); 
-if(response.ok){
-  setEmail("");
-}
-  }
-    return (
-      <div className="resetPassword">
-        <input
-          className="enterEmail"
-          placeholder="Enter your email"
-          type="email"
-          value={email}
-          onChange={setHandleEmail}
-        />
-        <button className="sendBtn" onClick={sendEmail}>
-          Send Email
-        </button>
-      </div>
+  };
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/forgetPassword`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: { email: email },
+        }),
+      }
     );
-}export default ForgetPassword;
+    if (response.ok) {
+      setEmail("");
+    }
+  };
+
+  return (
+    <div className="resetPassword">
+      <input
+        className="enterEmail"
+        placeholder="Enter your email"
+        type="email"
+        value={email}
+        onChange={setHandleEmail}
+      />
+      <button className="sendBtn" onClick={sendEmail}>
+        Send Email
+      </button>
+    </div>
+  );
+}
+export default ForgetPassword;

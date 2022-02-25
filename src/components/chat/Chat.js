@@ -140,7 +140,6 @@ function Chat() {
       currentUser.avatar
     );
     socket.current.on("onlineUsers", (onlineUsers) => {
-
       setOnlineUsers([...onlineUsers]);
     });
     socket.current.emit("join-rooms");
