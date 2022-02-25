@@ -133,15 +133,9 @@ function Chat() {
   }, [roomNotification]);
 
   useEffect(() => {
-    socket.current.emit(
-      "add user",
-      currentUser._id,
-      currentUser.username,
-      currentUser.avatar
-    );
+    socket.current.emit("add user",currentUser._id,currentUser.username,currentUser.avatar);
     socket.current.on("onlineUsers", (onlineUsers) => {
-
-      setOnlineUsers([...onlineUsers]);
+    setOnlineUsers([...onlineUsers]);
     });
     socket.current.emit("join-rooms");
     socket.current.on("rooms-list", (rooms) => {
@@ -210,7 +204,6 @@ function Chat() {
         );
         if (response.ok) {
           const chatRoom = await response.json();
-          
           setCurrentChat(chatRoom);
         }
       }

@@ -56,6 +56,11 @@ function Signup() {
         setShowButton(true);
         clearForm();
       }
+      else{
+        const data=await response.json();
+        const userMessage=data.message;
+        setMessage(userMessage);
+      }
     }
   };
   return (
