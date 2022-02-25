@@ -64,22 +64,31 @@ function Chat() {
       setAllUsers([...users]);
     }
   };
-  
+
   const getUser = (id) => {
-    if (allUsers.length > 0) {
-      const user = allUsers.find((user) => user._id === id);
-      return user.username;
+    let user = onlineUsers.find((user) => user.id === id);
+    if (!user) {
+      user = allUsers.find((user) => user._id === id);
     }
+    else{
+      user = allUsers.find((user) => user._id === id);
+      
+    }
+    return user.username;
   };
-  
+  //retun avatar number
   const getAvatar = (id) => {
-    if (allUsers.length > 0) {
-      const user = allUsers.find((user) => user._id === id);
-      return user.avatar;
+    let user = onlineUsers.find((user) => user.id === id);
+    if (user === undefined) {
+      user = allUsers.find((user) => user._id === id);
     }
+    else{
+      user = allUsers.find((user) => user._id === id);  
+    }
+    return user.avatar;
   };
 
-  const soundnotification =() =>{
+  const soundnotification = () => {
     audio.src = sound;
     audio.play();
   };
@@ -104,8 +113,8 @@ function Chat() {
         createdAt: Date.now(),
       });
     });
-     getCurrentUser();
-      getAllUsers();
+    getCurrentUser();
+    getAllUsers();
   }, []);
 
   useEffect(() => {
@@ -122,7 +131,10 @@ function Chat() {
     roomMessage &&
       roomMessage.to === room &&
       setCurrentChat((prev) => [...prev, roomMessage]);
-    roomMessage && roomMessage.to !== room && setRoomNotification(true) && soundnotification()    ;
+    roomMessage &&
+      roomMessage.to !== room &&
+      setRoomNotification(true) &&
+      soundnotification();
   }, [roomMessage]);
 
   useEffect(() => {
@@ -135,9 +147,14 @@ function Chat() {
   }, [roomNotification]);
 
   useEffect(() => {
-    socket.current.emit("add user",currentUser._id,currentUser.username,currentUser.avatar);
+    socket.current.emit(
+      "add user",
+      currentUser._id,
+      currentUser.username,
+      currentUser.avatar
+    );
     socket.current.on("onlineUsers", (onlineUsers) => {
-    setOnlineUsers([...onlineUsers]);
+      setOnlineUsers([...onlineUsers]);
     });
     socket.current.emit("join-rooms");
     socket.current.on("rooms-list", (rooms) => {
@@ -340,7 +357,7 @@ function Chat() {
       </div>
 
       {/* Mobil Version */}
-    <div className="menu">
+      <div className="menu">
         <div className="rooms_Dropdown">
           <span className="dropBtn">Public Rooms</span>
           <div className="dropdown-content">
@@ -388,35 +405,43 @@ function Chat() {
         <div className="sidebar">
           {/* <h2>Rooms</h2> */}
           <ul className="roomsList">
-            {currentUser.username!=="" && rooms.map((r, index) => {
-              return (
-                <li onClick={() => showRoomChat(r.room)} key={index}>
-                  {r.room}
-                  {r.newMessage && (
-                    <BsFillChatFill className="icon-notification" />
-                  )}
-                </li>
-              );
-            })}
+            {currentUser.username !== "" &&
+              rooms.map((r, index) => {
+                return (
+                  <li onClick={() => showRoomChat(r.room)} key={index}>
+                    {r.room}
+                    {r.newMessage && (
+                      <BsFillChatFill className="icon-notification" />
+                    )}
+                  </li>
+                );
+              })}
           </ul>
           <ul className="onlineList">
-            {currentUser.username!=="" && onlineUsers.map((user, index) => {
-              return (
-                <li onClick={() => setBoxChat(user.id)} key={index}>
-                  {user.username}
-                  {user.countMessage > 0 && (
-                    <span className="message-notification">
-                      {user.countMessage}
-                    </span>
-                  )}
-                </li>
-              );
-            })}
+            {currentUser.username !== "" &&
+              onlineUsers.map((user, index) => {
+                return (
+                  <li onClick={() => setBoxChat(user.id)} key={index}>
+                    {user.username}
+                    {user.countMessage > 0 && (
+                      <span className="message-notification">
+                        {user.countMessage}
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
           </ul>
         </div>
         <div className="chat-box">
           <fieldset className="messages-box">
-            <legend>{receiver !== "" ? getUser(receiver) : room !== "" ? room : "Select Room/User to chat"}</legend>
+            <legend>
+              {receiver !== ""
+                ? getUser(receiver)
+                : room !== ""
+                ? room
+                : "Select Room/User to chat"}
+            </legend>
 
             {currentChat.map((message, index) => {
               return (
@@ -460,29 +485,29 @@ function Chat() {
               );
             })}
           </fieldset>
-            {currentUser.username!=="" && (
-          <div className="footer-chat-box">
-            <form>
-              <div className="picker">
-                {showPicker && <Picker onEmojiClick={onEmojiClick} />}
-              </div>
-              <FaRegSmile
-                className="emoji"
-                onClick={() => setShowPicker((val) => !val)}
-              />
-              <input
-                type="text"
-                value={newMessage}
-                onChange={handleNewMessage}
-              />
-              <button onClick={sendMessage}>
-                <FiSend />
-              </button>
-            </form>
-          </div>)}
+          {currentUser.username !== "" && (
+            <div className="footer-chat-box">
+              <form>
+                <div className="picker">
+                  {showPicker && <Picker onEmojiClick={onEmojiClick} />}
+                </div>
+                <FaRegSmile
+                  className="emoji"
+                  onClick={() => setShowPicker((val) => !val)}
+                />
+                <input
+                  type="text"
+                  value={newMessage}
+                  onChange={handleNewMessage}
+                />
+                <button onClick={sendMessage}>
+                  <FiSend />
+                </button>
+              </form>
+            </div>
+          )}
         </div>
       </div>
-
     </div>
   );
 }
