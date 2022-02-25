@@ -161,11 +161,11 @@ $d: #12704c;
 
         .message-notification {
           font-size: 10px;
-          color: $a;
-          border: 1px solid $a;
+          color: $c;
+          background-color: $a;
+          padding: 2px 5px;
           border-radius: 50%;
           margin: 0 0 10px 10px;
-          padding: 0 3px;
           text-align: center;
         }
       }
@@ -449,11 +449,11 @@ $d: #12704c;
               color: var(--text-primary);
               .message-notification {
                 font-size: 10px;
-                color: $a;
-                border: 1px solid $a;
+                color: $c;
+                background-color: $a;
+                padding: 2px 5px;
                 border-radius: 50%;
                 margin: 0 0 10px 10px;
-                padding: 0 3px;
                 text-align: center;
               }
             }
