@@ -224,7 +224,7 @@ function Chat() {
     })();
   }, [room]);
 useEffect(()=>{
-  getAllUsers
+  getAllUsers();
 },[onlineUsers])
   const handleNewMessage = (e) => {
     const iNewMessage = e.target.value;
