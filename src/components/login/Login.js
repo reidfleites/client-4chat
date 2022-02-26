@@ -58,9 +58,10 @@ function Login() {
         />
         <div className="pwd-container">
           <input
-            placeholder=" password"
+            placeholder="password"
             type={isRevealPwd ? "text" : "password"}
             value={pwd}
+            autoComplete="on"
             onChange={(e) => setPwd(e.target.value)}
           />
           <img
